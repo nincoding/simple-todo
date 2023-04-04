@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
   }
   .App {
     min-height: 100vh;
+    background-color: #f2f2f2;
     @media screen and (min-width: 650px) {
       width: 640px;
     }

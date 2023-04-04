@@ -5,7 +5,7 @@ const ControlMenu = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  background-color: #f2f2f2;
+  background-color: white;
 `;
 
 export default ControlMenu;

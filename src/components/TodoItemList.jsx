@@ -2,13 +2,16 @@ import { useState } from "react";
 import ControlMenu from "../styles/ControlMenu";
 import FilterMenu from "./FilterMenu";
 import { filterList } from "../constants/stringValues";
+import TodoItem from "./TodoItem";
 
-const TodoItemList = (props) => {
+const TodoItemList = ({ todoItemList }) => {
 
   const [ activeFilter, setActiveFilter ] = useState("All");
 
-  const todoList = props.todoItemList.map((todoItem) => {
-    return <li key={todoItem.id}>{todoItem.todoItemContent}</li>;
+  const todoList = todoItemList.map((todoItem, index) => {
+    return (
+      <TodoItem key={todoItem.id} todoItem={todoItem} index={index}/>
+    );
   });
 
   const handleFilterClick = (text) => {
