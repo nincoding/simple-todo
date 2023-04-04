@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ControlMenu from "../styles/ControlMenu";
 import FilterMenu from "./FilterMenu";
+import { filterList } from "../constants/stringValues";
 
 const TodoItemList = (props) => {
 
@@ -17,9 +18,15 @@ const TodoItemList = (props) => {
   return (
     <div className="TodoItemList">
       <ControlMenu>
-        <FilterMenu text={"All"} active={activeFilter === "All"} onClick={() => handleFilterClick("All")} />
-        <FilterMenu text={"Active"}  active={activeFilter === "Active"} onClick={() => handleFilterClick("Active")} />
-        <FilterMenu text={"Completed"} active={activeFilter === "Completed"} onClick={() => handleFilterClick("Completed")} />
+        { filterList.map((it) => {
+          return <FilterMenu
+            key={it}
+            text={it}
+            active={activeFilter === it} 
+            onClick={() => handleFilterClick(it)}
+          />
+        })
+      }
       </ControlMenu>
       {todoList}
     </div>

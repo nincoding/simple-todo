@@ -11,6 +11,7 @@ const createBtnTheme = createTheme({
           borderRadius: '25px',
           border: 'none',
           fontSize: '18px',
+          padding: '5px 20px',
           '&:hover': {
             backgroundColor: '#5f3b3b',
             border:'none',
