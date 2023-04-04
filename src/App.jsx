@@ -20,12 +20,24 @@ function App() {
     todoItemId.current += 1;
   }
 
-  console.log(todoItemId, todoItemList);
+  const onTodoItemClick = (clickedTodoItem) => {
+    setTodoItemList(
+      todoItemList.map((todoItem) =>
+        clickedTodoItem.id === todoItem.id
+          ? {
+              ...todoItem,
+              isFinished: !todoItem.isFinished,
+            }
+          : todoItem
+      )
+    );
+  };
+
 
   return (
     <div className="App">
       <TodoItemInputField onCreate={onCreate}/>
-      <TodoItemList todoItemList={todoItemList}/>
+      <TodoItemList todoItemList={todoItemList} onTodoItemClick={onTodoItemClick} />
     </div>
   )
 }

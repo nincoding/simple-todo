@@ -4,13 +4,13 @@ import FilterMenu from "./FilterMenu";
 import { filterList } from "../constants/stringValues";
 import TodoItem from "./TodoItem";
 
-const TodoItemList = ({ todoItemList }) => {
+const TodoItemList = ({ todoItemList, onTodoItemClick }) => {
 
   const [ activeFilter, setActiveFilter ] = useState("All");
 
   const todoList = todoItemList.map((todoItem, index) => {
     return (
-      <TodoItem key={todoItem.id} todoItem={todoItem} index={index}/>
+      <TodoItem key={todoItem.id} todoItem={todoItem} index={index} onTodoItemClick={onTodoItemClick}/>
     );
   });
 

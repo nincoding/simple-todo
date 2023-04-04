@@ -1,9 +1,17 @@
 import TodoItemWrapper from "../styles/TodoItemWrapper";
+import { Checkbox } from "@mui/material";
+import { checkboxTheme } from "../styles/checkboxTheme"; 
 
-const TodoItem = ({ todoItem, index }) => {
+const TodoItem = ({ todoItem, index, onTodoItemClick }) => {
 
   return (
-    <TodoItemWrapper even={index % 2 === 0}>
+    <TodoItemWrapper even={index % 2 === 0} isFinished={todoItem.isFinished}>
+      <Checkbox 
+        sx={ checkboxTheme }
+        onClick={() => {
+          onTodoItemClick(todoItem); 
+        }}
+      />
       {todoItem.todoItemContent}
     </TodoItemWrapper>
   )
