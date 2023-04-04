@@ -1,16 +1,17 @@
-import Button from '@mui/material/Button';
+import { Button } from '@mui/material';
 import createBtnTheme from '../styles/createBtnTheme';
+import { ThemeProvider } from '@mui/material/styles';
 
 const CreateButton = () => {
   return (
-    <div>
+    <ThemeProvider theme={createBtnTheme}>
       <Button 
         variant="outlined"
         theme={createBtnTheme}
       >
         ADD
       </Button>
-    </div>
+    </ThemeProvider>
   )
 }
 

@@ -10,8 +10,7 @@ const TodoItemInputField = () => {
   console.log(input);
 
   return (
-    <div>
-      <ThemeProvider theme={textFieldTheme}>
+    <ThemeProvider theme={textFieldTheme}>
       <TextField 
         fullWidth
         id="todo-item-input"
@@ -20,8 +19,7 @@ const TodoItemInputField = () => {
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      </ThemeProvider>
-    </div>
+    </ThemeProvider>
   )
 };
 
