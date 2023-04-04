@@ -3,6 +3,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { TextField } from "@mui/material";
 import textFieldTheme from "../styles/textFieldTheme";
 import CreateButton from "./CreateButton";
+import TodoInputWrapper from "../styles/TodoInputWrapper";
 
 
 const TodoItemInputField = (props) => {
@@ -25,6 +26,7 @@ const TodoItemInputField = (props) => {
   }
 
   return (
+    <TodoInputWrapper>
     <ThemeProvider theme={textFieldTheme}>
       <TextField
         fullWidth
@@ -37,6 +39,7 @@ const TodoItemInputField = (props) => {
       />
       <CreateButton onClick={onCreate} />
     </ThemeProvider>
+    </TodoInputWrapper>
   )
 };
 
