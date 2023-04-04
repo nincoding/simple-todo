@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import TodoItemInputField from "./components/TodoItemInputField";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <p>init!</p>
+      <TodoItemInputField />
     </div>
   )
 }
