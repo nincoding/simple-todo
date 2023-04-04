@@ -1,7 +1,7 @@
 const TodoItemList = (props) => {
 
-  const todoList = props.todoItemList.map((todoItem, index) => {
-    return <li key={index}>{todoItem.todoItemContent}</li>;
+  const todoList = props.todoItemList.map((todoItem) => {
+    return <li key={todoItem.id}>{todoItem.todoItemContent}</li>;
   });
 
   return (
