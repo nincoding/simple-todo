@@ -6,7 +6,7 @@ const TodoInputWrapper = styled.div`
   align-items: center;
   gap: 20px;
   background-color: #ffcece;
-  padding: 20px 30px;
+  padding: 10px 30px;
 `;
 
 export default TodoInputWrapper;

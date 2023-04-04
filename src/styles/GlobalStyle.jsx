@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
   body {
-    font-family: 'CookieRun';
+    font-family: 'Jalnan';
     background-color: #f6f6f6;
     display: flex;
     justify-content: center;
