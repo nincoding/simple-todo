@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
     box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
   }
   .App {
+    position: relative;
     min-height: 100vh;
     background-color: #f2f2f2;
     @media screen and (min-width: 650px) {
