@@ -4,9 +4,10 @@ const TodayGraphWrapper = styled.div`
   width: 100%;
   min-height: 150px;
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
+  padding: 0px 40px;
   background-color: white;
   > h1 {
     font-size: 32px;
