@@ -4,6 +4,7 @@ import TodoItemList from "./components/TodoItemList";
 import TodayGraph from "./components/TodayGraph";
 import Header from "./components/Header";
 import ModeButton from "./components/ModeButton";
+import TodoItemModal from "./components/TodoItemModal";
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
       <TodayGraph todoItemList={todoItemList}/>
       <TodoItemInputField onCreate={onCreate}/>
       <TodoItemList todoItemList={todoItemList} onTodoItemClick={onTodoItemClick} />
+      <TodoItemModal />
     </div>
   )
 }
