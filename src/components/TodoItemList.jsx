@@ -36,7 +36,7 @@ const TodoItemList = ({ todoItemList, onTodoItemClick }) => {
         })
       }
       </ControlMenu>
-      {filteredList.length > 0 &&
+      {filteredList.length > 0 ?
         filteredList.map((todoItem, index) => (
           <TodoItem
             key={todoItem.id}
@@ -44,7 +44,18 @@ const TodoItemList = ({ todoItemList, onTodoItemClick }) => {
             index={index}
             onTodoItemClick={onTodoItemClick}
           />
-        ))}
+        )) : (
+          <div>
+            {
+              activeFilter === "All"
+              ? "오늘 해야할 일을 추가해주세요."
+              : activeFilter === "Active"
+              ? "할 일 목록이 비어 있습니다."
+              : "완료된 일이 없습니다."
+            }
+          </div>
+        )
+      }
     </div>
   )
 }
