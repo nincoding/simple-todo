@@ -30,6 +30,24 @@ const GlobalStyle = createGlobalStyle`
       width: 90vw;
     }
   }
+  .imgWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    margin-top: 30%;
+    > p {
+      color: #303030;
+      font-size: 18px;
+    }
+  }
+  img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    opacity: 80%;
+  }
 `;
 
 export default GlobalStyle;

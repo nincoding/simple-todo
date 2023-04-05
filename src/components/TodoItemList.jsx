@@ -3,6 +3,7 @@ import ControlMenu from "../styles/ControlMenu";
 import FilterMenu from "./FilterMenu";
 import { filterList } from "../constants/stringValues";
 import TodoItem from "./TodoItem";
+import EmptyItem from "./EmptyItem";
 
 const TodoItemList = ({ todoItemList, onTodoItemClick }) => {
 
@@ -22,7 +23,6 @@ const TodoItemList = ({ todoItemList, onTodoItemClick }) => {
     return true;
   });
 
-
   return (
     <div className="TodoItemList">
       <ControlMenu>
@@ -36,7 +36,7 @@ const TodoItemList = ({ todoItemList, onTodoItemClick }) => {
         })
       }
       </ControlMenu>
-      {filteredList.length > 0 ?
+      { todoItemList.length > 0 && filteredList.length > 0 ? (
         filteredList.map((todoItem, index) => (
           <TodoItem
             key={todoItem.id}
@@ -44,14 +44,19 @@ const TodoItemList = ({ todoItemList, onTodoItemClick }) => {
             index={index}
             onTodoItemClick={onTodoItemClick}
           />
-        )) : (
+        ))
+        ) : (
           <div>
             {
-              activeFilter === "All"
-              ? "오늘 해야할 일을 추가해주세요."
+              filteredList.length === 0 && activeFilter === "All"
+              ? <EmptyItem text={"오늘 할 일을 추가해주세요."} imgURL={"/assets/free-animated-icon-checklist-6416398.gif"}/>
+              : activeFilter === "Active" && todoItemList.length === 0
+              ? <EmptyItem text={"할 일 목록이 비어 있어요."} imgURL={"/assets/free-animated-icon-sad-7158908.gif"}/>
+              : activeFilter === "Completed" && todoItemList.length === 0
+              ? <EmptyItem text={"할 일 목록이 비어 있어요."} imgURL={"/assets/free-animated-icon-sad-7158908.gif"}/>
               : activeFilter === "Active"
-              ? "할 일 목록이 비어 있습니다."
-              : "완료된 일이 없습니다."
+              ? <EmptyItem text={"오늘 할 일을 모두 끝냈어요!"} imgURL={"/assets/free-animated-icon-party-7159012.gif"}/>
+              : <EmptyItem text={"아직 완료한 일이 없어요!"} imgURL={"/assets/free-animated-icon-cry-7158919.gif"}/>
             }
           </div>
         )
