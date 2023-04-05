@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import TodoItemInputField from "./components/TodoItemInputField";
 import TodoItemList from "./components/TodoItemList";
+import TodayGraph from "./components/TodayGraph";
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
 
   return (
     <div className="App">
+      <TodayGraph todoItemList={todoItemList}/>
       <TodoItemInputField onCreate={onCreate}/>
       <TodoItemList todoItemList={todoItemList} onTodoItemClick={onTodoItemClick} />
     </div>
