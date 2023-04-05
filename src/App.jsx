@@ -50,7 +50,6 @@ function App() {
       <TodayGraph todoItemList={todoItemList}/>
       <TodoItemInputField onCreate={onCreate}/>
       <TodoItemList todoItemList={todoItemList} onTodoItemClick={onTodoItemClick} />
-      <TodoItemModal />
     </div>
   )
 }
