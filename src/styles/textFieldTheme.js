@@ -17,8 +17,9 @@ const textFieldTheme = createTheme({
           },
           '& .MuiOutlinedInput-input': {
             marginLeft: '25px',
-            fontFamily: 'CookieRun',
-            color: 'black',
+            fontFamily: 'Jalnan',
+            fontWeight: '300',
+            color: '#303030',
           },
           '& .MuiInputLabel-root': {
             marginLeft: '25px',
