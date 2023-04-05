@@ -8,15 +8,20 @@ const TodoItemList = ({ todoItemList, onTodoItemClick }) => {
 
   const [ activeFilter, setActiveFilter ] = useState("All");
 
-  const todoList = todoItemList.map((todoItem, index) => {
-    return (
-      <TodoItem key={todoItem.id} todoItem={todoItem} index={index} onTodoItemClick={onTodoItemClick}/>
-    );
-  });
-
   const handleFilterClick = (text) => {
     setActiveFilter(text);
   };
+
+  const filteredList = todoItemList.filter((todoItem) => {
+    if (activeFilter === "Active") {
+      return !todoItem.isFinished;
+    }
+    if (activeFilter === "Completed") {
+      return todoItem.isFinished;
+    }
+    return true;
+  });
+
 
   return (
     <div className="TodoItemList">
@@ -31,7 +36,15 @@ const TodoItemList = ({ todoItemList, onTodoItemClick }) => {
         })
       }
       </ControlMenu>
-      {todoList}
+      {filteredList.length > 0 &&
+        filteredList.map((todoItem, index) => (
+          <TodoItem
+            key={todoItem.id}
+            todoItem={todoItem}
+            index={index}
+            onTodoItemClick={onTodoItemClick}
+          />
+        ))}
     </div>
   )
 }

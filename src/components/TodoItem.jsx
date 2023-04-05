@@ -11,6 +11,7 @@ const TodoItem = ({ todoItem, index, onTodoItemClick }) => {
         onClick={() => {
           onTodoItemClick(todoItem); 
         }}
+        checked={ !todoItem.isFinished ? false : true}
       />
       {todoItem.todoItemContent}
     </TodoItemWrapper>
