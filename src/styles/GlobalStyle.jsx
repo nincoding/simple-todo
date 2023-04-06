@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
   }
   .App {
     position: relative;
+    width: 100%;
     min-height: 100vh;
     background-color: #f2f2f2;
     @media screen and (min-width: 650px) {
@@ -37,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
     align-items: center;
     flex-direction: column;
     gap: 50px;
-    margin-top: 30%;
+    margin-top: 25%;
     > p {
       color: #303030;
       font-size: 18px;

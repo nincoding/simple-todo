@@ -5,6 +5,10 @@ const HeaderWrapper = styled.header`
   height: 80px;
   background-color: #f3f2f2;
   padding: 25px 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
 
   > h1 {
     font-size: 28px;

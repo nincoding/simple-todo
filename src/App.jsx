@@ -4,13 +4,14 @@ import TodoItemList from "./components/TodoItemList";
 import TodayGraph from "./components/TodayGraph";
 import Header from "./components/Header";
 import ModeButton from "./components/ModeButton";
-import TodoItemModal from "./components/TodoItemModal";
+import Footer from "./components/Footer";
 
 function App() {
 
   const todoItemId = useRef(1);
   const [ todoItemList, setTodoItemList ] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [clickedIcon, setClickedIcon] = useState('home');
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -50,6 +51,7 @@ function App() {
       <TodayGraph todoItemList={todoItemList}/>
       <TodoItemInputField onCreate={onCreate}/>
       <TodoItemList todoItemList={todoItemList} onTodoItemClick={onTodoItemClick} />
+      <Footer clickedIcon={clickedIcon} setClickedIcon={setClickedIcon}/>
     </div>
   )
 }
