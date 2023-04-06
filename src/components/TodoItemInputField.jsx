@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { ThemeProvider } from '@mui/material/styles';
 import { TextField } from "@mui/material";
-import textFieldTheme from "../styles/textFieldTheme";
+import { textFieldTheme } from "../styles/textFieldTheme";
 import CreateButton from "./CreateButton";
 import TodoInputWrapper from "../styles/TodoInputWrapper";
 

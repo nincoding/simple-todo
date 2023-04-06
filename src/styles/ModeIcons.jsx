@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { RiMoonClearFill } from "react-icons/ri";
-import { BsFillPinAngleFill } from 'react-icons/bs';
+import { BsFillPinAngleFill, BsPencilSquare } from 'react-icons/bs';
 import { HiSun } from "react-icons/hi";
 import { MdDelete } from 'react-icons/md';
 
@@ -53,6 +53,27 @@ export const ModalRemoveIcon = styled(RemoveIcon)`
   height: 50px;
   position: absolute;
   top: -20px;
+  color: #ff5953;
+  filter: drop-shadow(3px 3px 3px rgba(78, 7, 7, 0.8));
+`;
+
+export const EditIcon = styled(BsPencilSquare)`
+  color: #858585;
+  width: 24px;
+  height: 24px;
+  &:hover {
+    color: #ff5a5a;
+  }
+  &:active {
+    color: #943737;
+  }
+`;
+
+export const ModalEditIcon = styled(EditIcon)`
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: -15px;
   color: #ff5953;
   filter: drop-shadow(3px 3px 3px rgba(78, 7, 7, 0.8));
 `;

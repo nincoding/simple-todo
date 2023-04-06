@@ -5,7 +5,7 @@ export const checkboxTheme = {
   },
 }
 
-export const removeBtnTheme = {
+export const defaultBtnTheme = {
   color: "#ff5a5a",
   borderRadius: "15px",
   textDecoration: "none",

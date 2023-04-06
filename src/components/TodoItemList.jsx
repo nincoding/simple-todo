@@ -8,7 +8,7 @@ import Pagination from "./Pagination";
 
 const PAGE_SIZE = 9;
 
-const TodoItemList = ({ todoItemList, onTodoItemClick, onRemoveClick }) => {
+const TodoItemList = ({ todoItemList, onTodoItemClick, onRemoveClick, onEditClick }) => {
 
   const [ activeFilter, setActiveFilter ] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
@@ -60,6 +60,7 @@ const TodoItemList = ({ todoItemList, onTodoItemClick, onRemoveClick }) => {
             index={index}
             onTodoItemClick={onTodoItemClick}
             onRemoveClick={onRemoveClick}
+            onEditClick={onEditClick}
           />
         ))}
         {pageCount > 1 && (

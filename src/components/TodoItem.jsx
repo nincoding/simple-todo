@@ -1,15 +1,16 @@
 import { useState } from "react";
 import TodoItemWrapper from "../styles/TodoItemWrapper";
 import { Checkbox } from "@mui/material";
-import { checkboxTheme, removeBtnTheme } from "../styles/checkboxTheme"; 
+import { checkboxTheme, defaultBtnTheme } from "../styles/checkboxTheme"; 
 import TodoItemModal from "./TodoItemModal";
 import { Button } from '@mui/material';
-import { RemoveIcon } from "../styles/ModeIcons";
+import { RemoveIcon, EditIcon } from "../styles/ModeIcons";
 
-const TodoItem = ({ todoItem, index, onTodoItemClick, onRemoveClick }) => {
+const TodoItem = ({ todoItem, index, onTodoItemClick, onRemoveClick, onEditClick }) => {
 
-  const [modalOpen, setModalOpen] = useState(false);
-  const [isRemoveClicked, setIsRemoveClicked] = useState(false);
+  const [ modalOpen, setModalOpen ] = useState(false);
+  const [ isRemoveClicked, setIsRemoveClicked ] = useState(false);
+  const [ isEditClicked, setIsEditClicked ] = useState(false);
 
   const handleModalOpen = () => {
     setModalOpen(true);
@@ -18,6 +19,7 @@ const TodoItem = ({ todoItem, index, onTodoItemClick, onRemoveClick }) => {
   const handleModalClose = () => {
     setModalOpen(false);
     setIsRemoveClicked(false);
+    setIsEditClicked(false);
   };
 
   const filteredContent = todoItem.todoItemContent.length >= 20
@@ -39,7 +41,16 @@ const TodoItem = ({ todoItem, index, onTodoItemClick, onRemoveClick }) => {
     <span onClick={handleModalOpen}>{filteredContent}</span>
     <div>
       <Button 
-        sx={ removeBtnTheme }
+        sx={ defaultBtnTheme }
+        onClick={() => {
+          setIsEditClicked(true);
+          handleModalOpen();
+        }}
+      >
+        <EditIcon />
+      </Button>
+      <Button 
+        sx={ defaultBtnTheme }
         onClick={() => {
           setIsRemoveClicked(true);
           handleModalOpen();
@@ -54,7 +65,9 @@ const TodoItem = ({ todoItem, index, onTodoItemClick, onRemoveClick }) => {
         onClose={handleModalClose}
         todoItem={todoItem}
         isRemoveClicked={isRemoveClicked}
+        isEditClicked={isEditClicked}
         onRemoveClick={onRemoveClick}
+        onEditClick={onEditClick}
       />
     </>
   )

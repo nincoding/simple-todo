@@ -26,8 +26,8 @@ const ModalWrapper = styled.div`
     padding: 20px;
   }
   > p {
-    padding-top: 100px;
-    margin: 50px 30px;
+    padding-top: 30px;
+    margin: 30px 30px;
     max-width: 100%;
     font-size: 24px;
     word-break: keep-all;

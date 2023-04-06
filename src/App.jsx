@@ -49,6 +49,14 @@ function App() {
     }));
   }
 
+  const onEditClick = (clickedTodoItem, newTodoItemContent) => {
+    setTodoItemList(todoItemList.map((todoItem) => {
+      return clickedTodoItem.id === todoItem.id 
+        ? { ...todoItem, todoItemContent: newTodoItemContent }
+        : todoItem;
+    }));
+  };
+
   return (
     <div className="App">
       <ModeButton toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
@@ -59,6 +67,7 @@ function App() {
         todoItemList={todoItemList} 
         onTodoItemClick={onTodoItemClick}
         onRemoveClick={onRemoveClick}
+        onEditClick={onEditClick}
       />
       <Footer clickedIcon={clickedIcon} setClickedIcon={setClickedIcon}/>
     </div>
