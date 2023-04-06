@@ -9,21 +9,40 @@ const TodayGraphWrapper = styled.div`
   align-items: center;
   padding: 0px 40px;
   background-color: white;
+  @media screen and (max-width: 650px) {
+    padding-left: 20px;
+    transition: 300ms;
+  }
 
-  > p {
+  p {
     font-size: 20px;
     margin-right: 15px;
     color: #A65D50;
   }
-  > p:first-child {
+  p:first-child {
     font-size: 18px;
     position: absolute;
     top: 23%;
+    @media screen and (max-width: 650px) {
+      font-size: 18px;
+    }
   }
-  > p:nth-child(2) {
+  p:nth-child(2) {
     padding-top: 15px;
     color: #FF5A5A;
     font-size: 24px;
+    @media screen and (max-width: 650px) {
+      font-size: 18px;
+    }
+  }
+  span {
+    margin: 0px 5px;
+  }
+  span:first-child {
+    margin-left: 0px;
+  }
+  span:nth-child(2) {
+    color: #5f3b3b;
   }
 `;
 

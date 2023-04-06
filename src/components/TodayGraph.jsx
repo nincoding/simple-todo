@@ -16,7 +16,13 @@ const TodayGraph = ({ todoItemList }) => {
   return (
     <TodayGraphWrapper >
       <p>{date.getFullYear()}</p>
-      <p>{weekly[date.getDay()]} . {month[date.getMonth()]} . {date.getDate()}</p>
+      <p>
+        <span>{weekly[date.getDay()]}</span>
+         . 
+         <span>{month[date.getMonth()]}</span>
+         . 
+         <span>{date.getDate()}</span>
+      </p>
       <ProgressRing circumference={circumference} progress={progress}>
         <circle cx="75" cy="75" r="55" />
         <circle cx="75" cy="75" r="55" />
