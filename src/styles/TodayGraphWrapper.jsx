@@ -9,14 +9,21 @@ const TodayGraphWrapper = styled.div`
   align-items: center;
   padding: 0px 40px;
   background-color: white;
-  > h1 {
-    font-size: 32px;
-    color: #5f3b3b;
-  }
+
   > p {
     font-size: 20px;
     margin-right: 15px;
     color: #A65D50;
+  }
+  > p:first-child {
+    font-size: 18px;
+    position: absolute;
+    top: 23%;
+  }
+  > p:nth-child(2) {
+    padding-top: 15px;
+    color: #FF5A5A;
+    font-size: 24px;
   }
 `;
 

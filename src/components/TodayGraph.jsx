@@ -4,6 +4,10 @@ import ProgressRing from "../styles/ProgressRing";
 
 const TodayGraph = ({ todoItemList }) => {
 
+  const date = new Date();
+  const weekly = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
   const completedListNum = todoItemList.filter((item) => item.isFinished).length;
   const averageNum = completedListNum > 0 ? Math.round((completedListNum / todoItemList.length) * 100) : "0";
   const circumference = 2 * Math.PI * 55;
@@ -11,7 +15,8 @@ const TodayGraph = ({ todoItemList }) => {
 
   return (
     <TodayGraphWrapper >
-      <h1>TODAY I DO</h1>
+      <p>{date.getFullYear()}</p>
+      <p>{weekly[date.getDay()]} . {month[date.getMonth()]} . {date.getDate()}</p>
       <ProgressRing circumference={circumference} progress={progress}>
         <circle cx="75" cy="75" r="55" />
         <circle cx="75" cy="75" r="55" />
