@@ -38,7 +38,7 @@ export const OffCalenderIcon = styled(OnCalenderIcon)`
 
 export const FooterWrapper = styled.footer`
   height: 80px;
-  background-color: #f3f2f2;
+  background-color: #EDEDED;
   position: fixed;
   bottom: 0%;
   @media screen and (min-width: 650px) {
