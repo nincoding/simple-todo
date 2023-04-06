@@ -4,13 +4,18 @@ import FilterMenu from "./FilterMenu";
 import { filterList } from "../constants/stringValues";
 import TodoItem from "./TodoItem";
 import EmptyItem from "./EmptyItem";
+import Pagination from "./Pagination";
+
+const PAGE_SIZE = 9;
 
 const TodoItemList = ({ todoItemList, onTodoItemClick }) => {
 
   const [ activeFilter, setActiveFilter ] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleFilterClick = (text) => {
     setActiveFilter(text);
+    setCurrentPage(1);
   };
 
   const filteredList = todoItemList.filter((todoItem) => {
@@ -22,6 +27,16 @@ const TodoItemList = ({ todoItemList, onTodoItemClick }) => {
     }
     return true;
   });
+
+  const pageCount = Math.ceil(filteredList.length / PAGE_SIZE);
+
+  const handlePageClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const pageStartIndex = (currentPage - 1) * PAGE_SIZE; // 현재 페이지에서 보여줄 할 일들의 시작 인덱스를 계산합니다.
+  const pageEndIndex = pageStartIndex + PAGE_SIZE; // 현재 페이지에서 보여줄 할 일들의 마지막 인덱스를 계산합니다.
+  const currentPageList = filteredList.slice(pageStartIndex, pageEndIndex); // 현재 페이지에서 보여줄 할 일들을 구합니다.
 
   return (
     <div className="TodoItemList">
@@ -37,14 +52,23 @@ const TodoItemList = ({ todoItemList, onTodoItemClick }) => {
       }
       </ControlMenu>
       { todoItemList.length > 0 && filteredList.length > 0 ? (
-        filteredList.map((todoItem, index) => (
+        <>
+        {currentPageList.map((todoItem, index) => (
           <TodoItem
             key={todoItem.id}
             todoItem={todoItem}
             index={index}
             onTodoItemClick={onTodoItemClick}
           />
-        ))
+        ))}
+        {pageCount > 1 && (
+          <Pagination
+            pageCount={pageCount}
+            currentPage={currentPage}
+            onPageClick={handlePageClick}
+          />
+        )}
+      </>
         ) : (
           <div>
             {
