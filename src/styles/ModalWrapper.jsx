@@ -26,6 +26,7 @@ const ModalWrapper = styled.div`
     padding: 20px;
   }
   > p {
+    padding-top: 100px;
     margin: 50px 30px;
     max-width: 100%;
     font-size: 24px;
@@ -33,6 +34,17 @@ const ModalWrapper = styled.div`
     overflow-wrap: break-word;
     color: #303030;
     text-align: center;
+  }
+  .remove {
+    padding-top: 100px;
+    padding-left: 10px;
+  }
+  .removeModalBtn {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 100px;
+    gap: 100px;
   }
 `;
 

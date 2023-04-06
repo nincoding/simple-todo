@@ -1,16 +1,10 @@
-import { useState } from 'react';
-import { BsFillPinAngleFill } from 'react-icons/bs';
+import { ThemeProvider } from '@mui/material/styles';
+
+import { ModalRemoveIcon, PinIcon } from '../styles/ModeIcons';
 import ModalWrapper from "../styles/ModalWrapper";
 import styled from 'styled-components';
-
-const PinIcon = styled(BsFillPinAngleFill)`
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  top: -15px;
-  color: #ff5953;
-  filter: drop-shadow(3px 3px 3px rgba(78, 7, 7, 0.8));
-`;
+import { Button } from '@mui/material';
+import { createBtnTheme, removeModalBtnTheme, cancelModalBtnTheme } from '../styles/createBtnTheme';
 
 const ModalBackGround = styled.div`
   position: fixed;
@@ -23,17 +17,39 @@ const ModalBackGround = styled.div`
   overflow-y: auto;
 `;
 
-const TodoItemModal = ({ open, onClose, todoItem }) => {
+const TodoItemModal = ({ open, onClose, todoItem, isRemoveClicked, onRemoveClick }) => {
 
   return (
     <>
     {open && <ModalBackGround />}
     <ModalWrapper 
       open={open}
-      onClick={() => onClose()}
+      onClick={() => 
+      !isRemoveClicked && onClose()
+    }
     >
-      <PinIcon />
-      <p>{todoItem}</p>
+      {isRemoveClicked ? <ModalRemoveIcon /> : <PinIcon />}
+      {isRemoveClicked ? <p className='remove'>정말 삭제하시겠습니까?</p> : <p>{todoItem.todoItemContent}</p>}
+      {isRemoveClicked && 
+        <div className='removeModalBtn'>
+          <ThemeProvider theme={cancelModalBtnTheme}>
+            <Button 
+              onClick={() => onClose()}
+            >
+              취소
+            </Button>
+          </ThemeProvider>
+          <ThemeProvider theme={removeModalBtnTheme}>
+            <Button 
+              onClick={() =>{ 
+                onRemoveClick(todoItem);
+                onClose();
+              }}
+            >
+              삭제</Button>
+          </ThemeProvider>
+        </div>
+      }
     </ModalWrapper>
     </>
   )

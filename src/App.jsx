@@ -43,6 +43,11 @@ function App() {
     );
   };
 
+  const onRemoveClick = (clickedTodoItem) => {
+    setTodoItemList(todoItemList.filter((todoItem) => {
+      return todoItem.id !== clickedTodoItem.id;
+    }));
+  }
 
   return (
     <div className="App">
@@ -50,7 +55,11 @@ function App() {
       <Header />
       <TodayGraph todoItemList={todoItemList}/>
       <TodoItemInputField onCreate={onCreate}/>
-      <TodoItemList todoItemList={todoItemList} onTodoItemClick={onTodoItemClick} />
+      <TodoItemList 
+        todoItemList={todoItemList} 
+        onTodoItemClick={onTodoItemClick}
+        onRemoveClick={onRemoveClick}
+      />
       <Footer clickedIcon={clickedIcon} setClickedIcon={setClickedIcon}/>
     </div>
   )

@@ -7,7 +7,7 @@ simple todo list
 ```
 npm create vite@latest
 npm install
-npm install @mui/material @emotion/react @emotion/styled styled-components
+npm install @mui/material @emotion/react @emotion/styled styled-components react-icons
 ```
 
 ### devDependencies install
