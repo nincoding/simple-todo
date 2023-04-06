@@ -32,6 +32,7 @@ const ModalWrapper = styled.div`
     word-break: keep-all;
     overflow-wrap: break-word;
     color: #303030;
+    text-align: center;
   }
 `;
 

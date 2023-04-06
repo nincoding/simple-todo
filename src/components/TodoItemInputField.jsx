@@ -25,6 +25,12 @@ const TodoItemInputField = (props) => {
     setInput("");
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !isButtonDisabled) {
+      onCreate();
+    }
+  };
+
   const label = input.length > 200 ? "200글자를 넘으면 안됩니다." : "할 일을 추가 해주세요.";
   const isButtonDisabled = input.length > 200;
 
@@ -39,6 +45,7 @@ const TodoItemInputField = (props) => {
         value={input}
         onChange={handleChange}
         inputRef={contentInput}
+        onKeyDown={handleKeyDown}
       />
       <CreateButton onClick={onCreate} disabled={isButtonDisabled}/>
     </ThemeProvider>
