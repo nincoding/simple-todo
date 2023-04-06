@@ -25,19 +25,22 @@ const TodoItemInputField = (props) => {
     setInput("");
   }
 
+  const label = input.length > 200 ? "200글자를 넘으면 안됩니다." : "할 일을 추가 해주세요.";
+  const isButtonDisabled = input.length > 200;
+
   return (
     <TodoInputWrapper>
     <ThemeProvider theme={textFieldTheme}>
       <TextField
         fullWidth
         id="todo-item-input"
-        label="할 일을 추가 해주세요."
+        label={label}
         variant="outlined"
         value={input}
         onChange={handleChange}
         inputRef={contentInput}
       />
-      <CreateButton onClick={onCreate} />
+      <CreateButton onClick={onCreate} disabled={isButtonDisabled}/>
     </ThemeProvider>
     </TodoInputWrapper>
   )

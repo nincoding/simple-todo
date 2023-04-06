@@ -20,6 +20,7 @@ const ModalBackGround = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
 `;
 
 const TodoItemModal = ({ open, onClose, todoItem }) => {

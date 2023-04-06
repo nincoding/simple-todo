@@ -16,6 +16,10 @@ const TodoItem = ({ todoItem, index, onTodoItemClick }) => {
     setModalOpen(false);
   };
 
+  const filteredContent = todoItem.todoItemContent.length >= 20
+    ? todoItem.todoItemContent.slice(0, 20) + "..."
+    : todoItem.todoItemContent;
+
   return (
     <>
     <TodoItemWrapper even={index % 2 === 0} isFinished={todoItem.isFinished}>
@@ -26,7 +30,7 @@ const TodoItem = ({ todoItem, index, onTodoItemClick }) => {
         }}
         checked={ !todoItem.isFinished ? false : true}
       />
-      <span onClick={handleModalOpen}>{todoItem.todoItemContent}</span>
+      <span onClick={handleModalOpen}>{filteredContent}</span>
     </TodoItemWrapper>
       <TodoItemModal
         open={modalOpen}
