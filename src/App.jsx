@@ -1,4 +1,12 @@
 import { useState, useRef } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { PATH_URL } from "./constants/stringValues";
+
+import Home from "./pages/Home";
+import Graph from "./pages/Graph";
+import Calendar from "./pages/Calendar";
+
 import TodoItemInputField from "./components/TodoItemInputField";
 import TodoItemList from "./components/TodoItemList";
 import TodayGraph from "./components/TodayGraph";
@@ -58,6 +66,7 @@ function App() {
   };
 
   return (
+    <BrowserRouter>
     <div className="App">
       <ModeButton toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
       <Header />
@@ -69,8 +78,14 @@ function App() {
         onRemoveClick={onRemoveClick}
         onEditClick={onEditClick}
       />
+      <Routes>
+        <Route path={PATH_URL.HOME} element={<Home />} />
+        <Route path={PATH_URL.CALENDAR} element={<Calendar />} />
+        <Route path={PATH_URL.GRAPH} element={<Graph />} />
+      </Routes>
       <Footer clickedIcon={clickedIcon} setClickedIcon={setClickedIcon}/>
     </div>
+    </BrowserRouter>
   )
 }
 
