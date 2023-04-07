@@ -10,7 +10,8 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     font-family: 'Jalnan';
-    background-color: #f6f6f6;
+    //background-color: #f6f6f6;
+    background-color: ${(props) => props.isDarkMode ? '#222' : '#f6f6f6'};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -154,6 +155,12 @@ abbr[title] {
  color: white;
  font-family: 'Jalnan';
 }
+
+/* 다크모드 적용 */
+.App.dark {
+  background-color: #222;
+}
+
 `;
 
 export default GlobalStyle;

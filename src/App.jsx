@@ -1,11 +1,11 @@
-import { useState, useRef, useReducer } from "react";
+import { useState, useEffect, useRef, useReducer } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import GlobalStyle from './styles/GlobalStyle';
 // contant
 import { PATH_URL, LOCAL_STORAGE_KEY } from "./constants/stringValues";
 
 //store
-import { TodoDispatchContext, TodoStateContext } from "./contexts/TodoContext";
+import { TodoDispatchContext, TodoStateContext, DarkModeContext } from "./contexts/TodoContext";
 import { createTodo, removeTodo, editTodo, finishTodo } from "./store/actions";
 import reducer from "./store/reducer";
 
@@ -63,6 +63,17 @@ function App() {
     dispatch(editTodo(targetId, date, content));
   };
 
+  useEffect(() => {
+    const localIsDarkMode = localStorage.getItem("isDarkMode");
+    if (localIsDarkMode !== null) {
+      setIsDarkMode(localIsDarkMode === "true");
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("isDarkMode", isDarkMode);
+  }, [isDarkMode]);
+
   return (
     <TodoStateContext.Provider value={data}>
     <TodoDispatchContext.Provider value={{
@@ -71,8 +82,10 @@ function App() {
       onRemove,
       onEdit,
     }}>
+    <DarkModeContext.Provider value={isDarkMode}>
+    <GlobalStyle isDarkMode={isDarkMode}/>
     <BrowserRouter>
-    <div className="App">
+    <div className={`App ${isDarkMode ? "dark" : ""}`} >
       <ModeButton toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
       <Header />
       <Routes>
@@ -83,6 +96,7 @@ function App() {
       <Footer clickedIcon={clickedIcon} setClickedIcon={setClickedIcon}/>
     </div>
     </BrowserRouter>
+    </DarkModeContext.Provider>
     </TodoDispatchContext.Provider>
     </TodoStateContext.Provider>
   )
