@@ -7,13 +7,23 @@ import TodoItemList from "../components/TodoItemList";
 
 const Home = () => {
 
+  const [ date, setDate ] = useState(new Date());
   const todoList = useContext(TodoStateContext);
+
+  const filteredTodoList = todoList.filter((todo) => {
+    const todoDate = new Date(todo.date);
+    return (
+      todoDate.getDate() === date.getDate() &&
+      todoDate.getMonth() === date.getMonth() &&
+      todoDate.getFullYear() === date.getFullYear()
+    );
+  });
 
   return (
     <div>
-      <TodayGraph todoList={ todoList } />
-      <TodoItemInputField />
-      <TodoItemList todoList={ todoList } />
+      <TodayGraph todoList={ filteredTodoList } />
+      <TodoItemInputField date={date} />
+      <TodoItemList todoList={ filteredTodoList } />
     </div>
   )
 };

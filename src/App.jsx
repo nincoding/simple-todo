@@ -39,9 +39,16 @@ function App() {
       return initialState;
   });
 
-  const onCreate = ( content ) => {
-    dispatch(createTodo( dataId.current, content ));
-    dataId.current += 1;
+  const onCreate = ( date, content ) => {
+    console.log(date);
+    if ( date === undefined ) {
+      date = new Date();
+      dispatch(createTodo( date, content, dataId.current));
+      dataId.current += 1;
+    } else {
+      dispatch(createTodo( date, content, dataId.current));
+      dataId.current += 1;
+    }
   };
 
   const onFinish = (targetId) => {

@@ -5,12 +5,12 @@ export const initTodo = ( todoList ) => ({
   data: todoList
 });
 
-export const createTodo = ( dataId, content ) => ({
+export const createTodo = ( date, content, dataId ) => ({
   type: CREATE,
   data: {
     id: dataId,
-    date: new Date().getTime(),
-    content,
+    date: new Date(date).getTime(),
+    content: content,
     finish: false,
     },
 });

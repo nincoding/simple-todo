@@ -7,7 +7,7 @@ import TodoInputWrapper from "../styles/TodoInputWrapper";
 
 import { TodoDispatchContext } from "../contexts/TodoContext";
 
-const TodoItemInputField = () => {
+const TodoItemInputField = ({ date }) => {
 
   const [ content, setContent ] = useState("");
   const { onCreate } = useContext(TodoDispatchContext);
@@ -22,7 +22,7 @@ const TodoItemInputField = () => {
       contentInput.current.focus();
       return;
     }
-    onCreate(content);
+    onCreate(date, content);
     setContent("");
   }
 
