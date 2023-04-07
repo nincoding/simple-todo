@@ -12,7 +12,6 @@ const ModeButton = ({ isDarkMode, toggleDarkMode }) => {
         ? <SunIcon />
         : <MoonIcon />
       }
-      { console.log(isDarkMode) }
     </ModeButtonWrapper>
   )
 }

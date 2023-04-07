@@ -1,3 +1,7 @@
+import { useNavigate } from "react-router-dom";
+import { PATH_URL } from "../constants/stringValues";
+
+// style
 import { 
   OnGraphIcon,
   OnHomeIcon,
@@ -8,13 +12,17 @@ import {
   FooterWrapper,
 } from "../styles/Footer";
 
+
 const Footer = ({ clickedIcon, setClickedIcon }) => {
+
+  const navigate = useNavigate();
 
   const handleIconClick = (iconName) => {
     if (clickedIcon === iconName) {
       return;
     } else {
       setClickedIcon(iconName);
+      navigate(PATH_URL[iconName.toUpperCase()]);
     }
   };
 
