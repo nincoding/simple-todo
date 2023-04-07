@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { PATH_URL } from "../constants/stringValues";
 
 // style
@@ -12,10 +13,10 @@ import {
   FooterWrapper,
 } from "../styles/Footer";
 
-
 const Footer = ({ clickedIcon, setClickedIcon }) => {
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleIconClick = (iconName) => {
     if (clickedIcon === iconName) {
@@ -25,6 +26,20 @@ const Footer = ({ clickedIcon, setClickedIcon }) => {
       navigate(PATH_URL[iconName.toUpperCase()]);
     }
   };
+
+  // localStorage에 저장된 clickedIcon 값을 초기화합니다.
+  React.useEffect(() => {
+    const storageClickedIcon = window.localStorage.getItem("clickedIcon");
+    if (storageClickedIcon) {
+      setClickedIcon(storageClickedIcon);
+    }
+  }, [setClickedIcon]);
+
+  // location.pathname 값으로 clickedIcon 값을 localStorage에 저장합니다.
+  React.useEffect(() => {
+    const pathname = location.pathname.replace("/", "");
+    window.localStorage.setItem("clickedIcon", pathname);
+  }, [location]);
 
   return (
     <FooterWrapper>

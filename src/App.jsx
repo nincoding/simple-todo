@@ -46,7 +46,7 @@ function App() {
       dispatch(createTodo( date, content, dataId.current));
       dataId.current += 1;
     } else {
-      dispatch(createTodo( date, content, dataId.current));
+            dispatch(createTodo( date, content, dataId.current));
       dataId.current += 1;
     }
   };
