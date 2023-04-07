@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { ThemeProvider } from '@mui/material/styles';
 
 import { modalTextFieldTheme } from "../styles/textFieldTheme";
@@ -9,6 +9,7 @@ import ModalWrapper from "../styles/ModalWrapper";
 import styled from 'styled-components';
 import { Button } from '@mui/material';
 import { removeModalBtnTheme, cancelModalBtnTheme } from '../styles/createBtnTheme';
+import { TodoDispatchContext } from "../contexts/TodoContext";
 
 const ModalBackGround = styled.div`
   position: fixed;
@@ -27,11 +28,10 @@ const TodoItemModal = ({
   todoItem,
   isRemoveClicked,
   isEditClicked,
-  onRemoveClick,
-  onEditClick,
  }) => {
 
-  const [ input, setInput ] = useState(todoItem.todoItemContent);
+  const [ input, setInput ] = useState(todoItem.content);
+  const { onRemove, onEdit } = useContext(TodoDispatchContext);
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -39,7 +39,6 @@ const TodoItemModal = ({
 
   const label = input.length > 200 ? "200글자를 넘으면 안됩니다." : "할 일을 수정 해주세요.";
   const isButtonDisabled = input.length > 200;
-
 
   return (
     <>
@@ -54,7 +53,7 @@ const TodoItemModal = ({
     >
       {!isEditClicked && !isRemoveClicked && <>
         <PinIcon />
-        <p>{todoItem.todoItemContent}</p>
+        <p>{todoItem.content}</p>
       </>}
 
       {isRemoveClicked && <>
@@ -71,7 +70,7 @@ const TodoItemModal = ({
           <ThemeProvider theme={removeModalBtnTheme}>
             <Button 
               onClick={() =>{ 
-                onRemoveClick(todoItem);
+                onRemove(todoItem.id);
                 onClose();
               }}
             >
@@ -109,7 +108,7 @@ const TodoItemModal = ({
             <Button
               disabled={isButtonDisabled} 
               onClick={() =>{
-                onEditClick(todoItem, input);
+                onEdit(todoItem.id, todoItem.date, input, todoItem.finish);
                 onClose();
               }}
             >
@@ -118,8 +117,6 @@ const TodoItemModal = ({
         </div>
         </>
       }
-
-      {console.log(isEditClicked)}
     </ModalWrapper>
     </>
   )

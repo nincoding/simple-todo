@@ -1,38 +1,39 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { ThemeProvider } from '@mui/material/styles';
 import { TextField } from "@mui/material";
 import { textFieldTheme } from "../styles/textFieldTheme";
 import CreateButton from "./CreateButton";
 import TodoInputWrapper from "../styles/TodoInputWrapper";
 
+import { TodoDispatchContext } from "../contexts/TodoContext";
 
-const TodoItemInputField = (props) => {
+const TodoItemInputField = () => {
 
-  const [ input, setInput ] = useState("");
-
+  const [ content, setContent ] = useState("");
+  const { onCreate } = useContext(TodoDispatchContext);
   const contentInput = useRef();
 
   const handleChange = (e) => {
-    setInput(e.target.value);
+    setContent(e.target.value);
   }
 
-  const onCreate = () => {
-    if (input.length === 0) {
+  const onCreateClick = () => {
+    if (content.length === 0) {
       contentInput.current.focus();
       return;
     }
-    props.onCreate(input);
-    setInput("");
+    onCreate(content);
+    setContent("");
   }
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && !isButtonDisabled) {
-      onCreate();
+      onCreateClick();
     }
   };
 
-  const label = input.length > 200 ? "200글자를 넘으면 안됩니다." : "할 일을 추가 해주세요.";
-  const isButtonDisabled = input.length > 200;
+  const label = content.length > 200 ? "200글자를 넘으면 안됩니다." : "할 일을 추가 해주세요.";
+  const isButtonDisabled = content.length > 200;
 
   return (
     <TodoInputWrapper>
@@ -42,12 +43,12 @@ const TodoItemInputField = (props) => {
         id="todo-item-input"
         label={label}
         variant="outlined"
-        value={input}
+        value={content}
         onChange={handleChange}
         inputRef={contentInput}
         onKeyDown={handleKeyDown}
       />
-      <CreateButton onClick={onCreate} disabled={isButtonDisabled}/>
+      <CreateButton onCreateClick={onCreateClick} disabled={isButtonDisabled}/>
     </ThemeProvider>
     </TodoInputWrapper>
   )

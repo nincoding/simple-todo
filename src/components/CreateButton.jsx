@@ -2,14 +2,14 @@ import { Button } from '@mui/material';
 import { createBtnTheme } from '../styles/createBtnTheme';
 import { ThemeProvider } from '@mui/material/styles';
 
-const CreateButton = ({ onClick, disabled }) => {
+const CreateButton = ({ onCreateClick, disabled }) => {
 
   return (
     <ThemeProvider theme={createBtnTheme}>
       <Button 
         variant="outlined"
         theme={createBtnTheme}
-        onClick={onClick}
+        onClick={onCreateClick}
         disabled={disabled}
       >
         ADD
