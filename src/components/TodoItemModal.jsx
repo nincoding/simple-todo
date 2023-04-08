@@ -1,15 +1,15 @@
 import { useState, useRef, useContext } from "react";
 import { ThemeProvider } from '@mui/material/styles';
 
-import { modalTextFieldTheme } from "../styles/textFieldTheme";
+import { modalTextFieldTheme, modalTextFieldDarkTheme } from "../styles/textFieldTheme";
 import { TextField } from "@mui/material";
 
 import { ModalRemoveIcon, PinIcon, ModalEditIcon } from '../styles/ModeIcons';
 import ModalWrapper from "../styles/ModalWrapper";
 import styled from 'styled-components';
 import { Button } from '@mui/material';
-import { removeModalBtnTheme, cancelModalBtnTheme } from '../styles/createBtnTheme';
-import { TodoDispatchContext } from "../contexts/TodoContext";
+import { removeModalBtnTheme, cancelModalBtnTheme, removeModalBtnDarkTheme } from '../styles/createBtnTheme';
+import { DarkModeContext, TodoDispatchContext } from "../contexts/TodoContext";
 
 const ModalBackGround = styled.div`
   position: fixed;
@@ -32,6 +32,7 @@ const TodoItemModal = ({
 
   const [ input, setInput ] = useState(todoItem.content);
   const { onRemove, onEdit } = useContext(TodoDispatchContext);
+  const isDarkMode = useContext(DarkModeContext);
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -39,6 +40,9 @@ const TodoItemModal = ({
 
   const label = input.length > 200 ? "200글자를 넘으면 안됩니다." : "할 일을 수정 해주세요.";
   const isButtonDisabled = input.length > 200;
+
+  const removeTheme = isDarkMode ? removeModalBtnDarkTheme : removeModalBtnTheme;
+  const editTheme = isDarkMode ? modalTextFieldDarkTheme : modalTextFieldTheme;
 
   return (
     <>
@@ -50,14 +54,15 @@ const TodoItemModal = ({
       if (isRemoveClicked) return;
        onClose();
       }}
+      isDarkMode={isDarkMode}
     >
       {!isEditClicked && !isRemoveClicked && <>
-        <PinIcon />
+        <PinIcon isDarkMode={isDarkMode}/>
         <p>{todoItem.content}</p>
       </>}
 
       {isRemoveClicked && <>
-        <ModalRemoveIcon />
+        <ModalRemoveIcon isDarkMode={isDarkMode}/>
         <p className='remove'>정말 삭제하시겠습니까?</p>
         <div className='removeModalBtn'>
           <ThemeProvider theme={cancelModalBtnTheme}>
@@ -67,7 +72,7 @@ const TodoItemModal = ({
               취소
             </Button>
           </ThemeProvider>
-          <ThemeProvider theme={removeModalBtnTheme}>
+          <ThemeProvider theme={removeTheme}>
             <Button 
               onClick={() =>{ 
                 onRemove(todoItem.id);
@@ -83,8 +88,8 @@ const TodoItemModal = ({
       {
         isEditClicked && 
         <>
-          <ModalEditIcon />
-          <ThemeProvider theme={modalTextFieldTheme}>
+          <ModalEditIcon isDarkMode={isDarkMode}/>
+          <ThemeProvider theme={editTheme}>
           <TextField
             fullWidth
             id="todo-item-input"
@@ -104,7 +109,7 @@ const TodoItemModal = ({
               취소
             </Button>
           </ThemeProvider>
-          <ThemeProvider theme={removeModalBtnTheme}>
+          <ThemeProvider theme={removeTheme}>
             <Button
               disabled={isButtonDisabled} 
               onClick={() =>{

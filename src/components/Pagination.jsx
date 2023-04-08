@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import { DarkModeContext } from "../contexts/TodoContext";
 
 const PaginationContainer = styled.ul`
   display: flex;
@@ -7,16 +9,17 @@ const PaginationContainer = styled.ul`
   position: fixed;
   bottom: 80px;
   width: 100%;
-  background-color: #fafafa;
+  background-color: ${(props) => props.isDarkMode ? '#dddddd6' : '#fff' };
   opacity: 0.8;
   > li {
     cursor: pointer;
     padding: 20px;
+    color: ${(props) => props.isDarkMode ? '#f1f1f1' : '#333' };
     &.active {
-    color: #f14747;
+    color: ${(props) => props.isDarkMode ? '#5A88FF' : '#f14747' };
    }
    :hover {
-    color: #d83838;
+    color: ${(props) => props.isDarkMode ? '#5A88FF' : '#f14747' };
    }
   }
   @media screen and (min-width: 650px) {
@@ -29,6 +32,8 @@ const PaginationContainer = styled.ul`
 
 const Pagination = ({ pageCount, currentPage, onPageClick }) => {
 
+  const isDarkMode = useContext(DarkModeContext);
+
   const startPage = Math.max(currentPage - 4, 1);
   const endPage = Math.min(startPage + 8, pageCount);
   const pageNumbers = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
@@ -40,7 +45,7 @@ const Pagination = ({ pageCount, currentPage, onPageClick }) => {
   const filteredPage = pageNumbers.slice(0, 5);
 
   return (
-    <PaginationContainer>
+    <PaginationContainer isDarkMode={isDarkMode}>
      {pageCount > 5 && currentPage > 5 && (
         <li onClick={() => handlePageClick(currentPage - 1)}>
           &lt;

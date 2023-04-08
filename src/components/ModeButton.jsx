@@ -6,6 +6,7 @@ const ModeButton = ({ isDarkMode, toggleDarkMode }) => {
   return (
     <ModeButtonWrapper
       onClick={toggleDarkMode}
+      isDarkMode={isDarkMode}
     >
       {
         isDarkMode 

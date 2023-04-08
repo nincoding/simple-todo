@@ -10,7 +10,7 @@ const ProgressRing = styled.svg`
   
   circle {
     fill: transparent;
-    stroke: #FF5A5A;
+    stroke: ${(props) => props.isDarkMode ? '#3A5BAE' : '#FF5A5A'};
     stroke-width: 10;
     stroke-linecap: round;
     transform: translate(10px, 10px);
@@ -20,7 +20,7 @@ const ProgressRing = styled.svg`
   circle:last-child {
     stroke-dasharray: ${(props) => props.circumference};
     stroke-dashoffset: ${(props) => -props.progress};
-    stroke: #F2B5AA;
+    stroke: ${(props) => props.isDarkMode ? '#e7e7e781' : '#F2B5AA'};
     transform-origin: center;
     transform: translate(10px, 10px) rotate(-90deg);
     transition: stroke-dashoffset 500ms ease-in-out;

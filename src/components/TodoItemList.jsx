@@ -5,7 +5,7 @@ import { filterList } from "../constants/stringValues";
 import TodoItem from "./TodoItem";
 import EmptyItem from "./EmptyItem";
 import Pagination from "./Pagination";
-import { TodoDispatchContext } from "../contexts/TodoContext"; 
+import { DarkModeContext, TodoDispatchContext } from "../contexts/TodoContext"; 
 
 const PAGE_SIZE = 9;
 
@@ -14,6 +14,7 @@ const TodoItemList = ({ todoList }) => {
   const [ activeFilter, setActiveFilter ] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
   const { onRemove, onEdit, onFinish } = useContext(TodoDispatchContext);
+  const isDarkMode = useContext(DarkModeContext);
 
   const handleFilterClick = (text) => {
     setActiveFilter(text);
@@ -42,7 +43,7 @@ const TodoItemList = ({ todoList }) => {
 
   return (
     <div className="TodoItemList">
-      <ControlMenu>
+      <ControlMenu isDarkMode={isDarkMode}>
         { filterList.map((it) => {
           return <FilterMenu
             key={it}

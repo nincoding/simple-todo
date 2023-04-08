@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Jalnan';
     //background-color: #f6f6f6;
-    background-color: ${(props) => props.isDarkMode ? '#222' : '#f6f6f6'};
+    background-color: ${(props) => props.isDarkMode ? '#1e1e1e' : '#f6f6f6'};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,9 +39,9 @@ const GlobalStyle = createGlobalStyle`
     align-items: center;
     flex-direction: column;
     gap: 50px;
-    margin-top: 25%;
+    margin-top: 10vh;
     > p {
-      color: #303030;
+      color: ${(props) => props.isDarkMode ? '#D7D7D7' : '#303030' };
       font-size: 18px;
     }
   }
@@ -55,17 +55,18 @@ const GlobalStyle = createGlobalStyle`
   .react-calendar { 
   width: 500px;
   max-width: 100%;
-  background-color: #fff;
-  color: #222;
+  background-color: ${(props) => props.isDarkMode ? '#303030' : '#fff7dab0' };
+  color:  ${(props) => props.isDarkMode ? '#89aaff' : '#A65D50' };
   border-radius: 8px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.125em;
   border: none;
   font-family: 'Jalnan';
+  padding-bottom: 20px;
 }
 .react-calendar__navigation button {
- color: #ff5a5a;
+ color: ${(props) => props.isDarkMode ? '#5A88FF' : '#ff5a5a' };
  min-width: 44px;
  background: none;
  font-size: 15px;
@@ -85,29 +86,35 @@ const GlobalStyle = createGlobalStyle`
 abbr[title] {
  text-decoration: none;
 }
+.react-calendar__month-view__days__day {
+  color: ${(props) => props.isDarkMode ? '#89aaff' : '#222' };
+}
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #808080;
+}
 .react-calendar__month-view__days__day--weekend {
- color: #ff5a5a;
+ color: ${(props) => props.isDarkMode ? '#5A88FF' : '#ff5a5a' };
  font-family: 'Jalnan';
 }
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
  background: #f8f8fa;
- color: #ff5a5a;
+ color: ${(props) => props.isDarkMode ? '#5A88FF' : '#ff5a5a' };
  border-radius: 6px;
 }
 .react-calendar__tile--now {
- background: #ff595657;
+ background: ${(props) => props.isDarkMode ? '#5a89ff53' : '#ff595657' };
  border-radius: 6px;
  font-weight: bold;
- color: #ff5a5a;
+ color: ${(props) => props.isDarkMode ? '#5A88FF' : '#ff5a5a' };
  font-family: 'Jalnan';
 }
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
- background: #ff5a5a;
+ background: ${(props) => props.isDarkMode ? '#5A88FF' : '#ff5a5a' };
  border-radius: 6px;
  font-weight: bold;
- color: #ff5a5a;
+ color: ${(props) => props.isDarkMode ? 'white' : 'white' };
  font-family: 'Jalnan';
 }
 .react-calendar__tile--hasActive:enabled:hover,
@@ -116,7 +123,7 @@ abbr[title] {
  font-family: 'Jalnan';
 }
 .react-calendar__tile--active {
- background: #ff5a5a;
+ background: ${(props) => props.isDarkMode ? '#5A88FF' : '#ff5a5a' };
  border-radius: 6px;
  font-weight: bold;
  color: white;
@@ -124,7 +131,7 @@ abbr[title] {
 }
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
- background: #ff5a5a;
+ background: ${(props) => props.isDarkMode ? '#5A88FF' : '#ff5a5a' };
  color: white;
  font-family: 'Jalnan';
 }
@@ -133,7 +140,7 @@ abbr[title] {
 }
 .react-calendar__tile--range {
  background: #f8f8fa;
- color: #ff5a5a;
+ color: ${(props) => props.isDarkMode ? '#5A88FF' : '#ff5a5a' };
  border-radius: 0;
  font-family: 'Jalnan';
 }
@@ -142,7 +149,7 @@ abbr[title] {
  border-bottom-right-radius: 0;
  border-top-left-radius: 6px;
  border-bottom-left-radius: 6px;
- background: #ff5a5a;
+ background: ${(props) => props.isDarkMode ? '#5A88FF' : '#ff5a5a' };
  color: white;
  font-family: 'Jalnan';
 }
@@ -151,16 +158,15 @@ abbr[title] {
  border-bottom-left-radius: 0;
  border-top-right-radius: 6px;
  border-bottom-right-radius: 6px;
- background: #ff5a5a;
+ background: ${(props) => props.isDarkMode ? '#5A88FF' : '#ff5a5a' };
  color: white;
  font-family: 'Jalnan';
 }
 
 /* 다크모드 적용 */
 .App.dark {
-  background-color: #222;
+  background-color: #181818;
 }
-
 `;
 
 export default GlobalStyle;

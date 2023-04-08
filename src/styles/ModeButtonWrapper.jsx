@@ -8,7 +8,7 @@ const ModeButtonWrapper = styled.button`
   width: 60px;
   height: 60px;
   border: none;
-  background-color: #f3f2f2;
+  background-color: ${(props) => props.isDarkMode ? '#1e1f22' :'#f3f2f2'};
   cursor: pointer;
 `;
 

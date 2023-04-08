@@ -4,7 +4,7 @@ const ModalWrapper = styled.div`
   display: ${(props) => props.open ? 'block' : 'none' };
   z-index: 9999;
   position: fixed;
-  background-color: #fff7da;
+  background-color: ${(props) => props.isDarkMode ? '#303030' : '#fff7da' };
   top: 50%;
   left: 50%;
   transform: translate(-50%, -25%);
@@ -32,7 +32,7 @@ const ModalWrapper = styled.div`
     font-size: 24px;
     word-break: keep-all;
     overflow-wrap: break-word;
-    color: #303030;
+    color: ${(props) => props.isDarkMode ? '#f7f7f7d3' : '#303030' };
     text-align: center;
   }
   .remove {

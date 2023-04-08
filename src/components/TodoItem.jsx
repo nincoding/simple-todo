@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import TodoItemWrapper from "../styles/TodoItemWrapper";
 import { Checkbox } from "@mui/material";
-import { checkboxTheme, defaultBtnTheme } from "../styles/checkboxTheme"; 
+import { checkboxTheme, defaultBtnTheme, checkboxDarkTheme } from "../styles/checkboxTheme"; 
 import TodoItemModal from "./TodoItemModal";
 import { Button } from '@mui/material';
 import { RemoveIcon, EditIcon } from "../styles/ModeIcons";
-import { TodoDispatchContext } from "../contexts/TodoContext";
+import { DarkModeContext, TodoDispatchContext } from "../contexts/TodoContext";
 
 const TodoItem = ({ todoItem, index }) => {
 
@@ -13,6 +13,7 @@ const TodoItem = ({ todoItem, index }) => {
   const [ isRemoveClicked, setIsRemoveClicked ] = useState(false);
   const [ isEditClicked, setIsEditClicked ] = useState(false);
   const { onFinish } = useContext(TodoDispatchContext);
+  const isDarkMode = useContext(DarkModeContext);
 
   const handleModalOpen = () => {
     setModalOpen(true);
@@ -30,10 +31,10 @@ const TodoItem = ({ todoItem, index }) => {
 
   return (
     <>
-    <TodoItemWrapper even={index % 2 === 0} isFinished={todoItem.finish}>
+    <TodoItemWrapper even={index % 2 === 0} isFinished={todoItem.finish} isDarkMode={isDarkMode}>
     <div>
       <Checkbox 
-        sx={ checkboxTheme }
+        sx={ isDarkMode ? checkboxDarkTheme : checkboxTheme }
         onClick={() => {
           onFinish(todoItem.id, todoItem.finish);
         }}
@@ -49,7 +50,7 @@ const TodoItem = ({ todoItem, index }) => {
           handleModalOpen();
         }}
       >
-        <EditIcon />
+        <EditIcon isDarkMode={isDarkMode}/>
       </Button>
       <Button 
         sx={ defaultBtnTheme }
@@ -58,7 +59,7 @@ const TodoItem = ({ todoItem, index }) => {
           handleModalOpen();
         }}
       >
-        <RemoveIcon />
+        <RemoveIcon isDarkMode={isDarkMode}/>
       </Button>
     </div>
     </TodoItemWrapper>

@@ -9,7 +9,6 @@ export const MoonIcon = styled(RiMoonClearFill)`
   width: 50px;
   height: 50px;
   color: #FF5A5A;
-
   &:hover {
     color: #5f3b3b;
     transition: 400ms;
@@ -20,9 +19,9 @@ export const SunIcon = styled(HiSun)`
   width: 60px;
   height: 60px;
   color: #5A88FF;
-
+  background-color: '#1e1f22';
   &:hover {
-    color: #2c4380;
+    color: #89aaff;
     transition: 400ms;
   }
 `;
@@ -32,10 +31,10 @@ export const RemoveIcon = styled(MdDelete)`
   width: 24px;
   height: 24px;
   &:hover {
-    color: #ff5a5a;
+    color: ${ (props) => props.isDarkMode ? '#6062fb' :'#ff5953'};
   }
   &:active {
-    color: #943737;
+    color: ${ (props) => props.isDarkMode ? '#6062fb83' :'#943737'};
   }
 `;
 
@@ -44,7 +43,8 @@ width: 50px;
 height: 50px;
 position: absolute;
 top: -15px;
-color: #ff5953;
+color: ${ (props) => props.isDarkMode ? '#6062fb' :'#ff5953'};
+
 filter: drop-shadow(3px 3px 3px rgba(78, 7, 7, 0.8));
 `;
 
@@ -53,7 +53,7 @@ export const ModalRemoveIcon = styled(RemoveIcon)`
   height: 50px;
   position: absolute;
   top: -20px;
-  color: #ff5953;
+  color: ${ (props) => props.isDarkMode ? '#6062fb' :'#ff5953'};
   filter: drop-shadow(3px 3px 3px rgba(78, 7, 7, 0.8));
 `;
 
@@ -62,10 +62,10 @@ export const EditIcon = styled(BsPencilSquare)`
   width: 24px;
   height: 24px;
   &:hover {
-    color: #ff5a5a;
+    color: ${ (props) => props.isDarkMode ? '#6062fb' :'#ff5953'};
   }
   &:active {
-    color: #943737;
+    color: ${ (props) => props.isDarkMode ? '#6062fb83' :'#943737'};
   }
 `;
 
@@ -74,6 +74,6 @@ export const ModalEditIcon = styled(EditIcon)`
   height: 50px;
   position: absolute;
   top: -15px;
-  color: #ff5953;
+  color: ${ (props) => props.isDarkMode ? '#6062fb' :'#ff5953'};
   filter: drop-shadow(3px 3px 3px rgba(78, 7, 7, 0.8));
 `;

@@ -7,7 +7,7 @@ import { TodoStateContext } from "../contexts/TodoContext";
 import TodoItemInputField from "../components/TodoItemInputField";
 
 const CalendarWrapper = styled.div`
-  margin: 10%;
+  margin: 12%;
 `;
 
 const CalendarPage = () => {

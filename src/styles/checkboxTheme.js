@@ -5,6 +5,13 @@ export const checkboxTheme = {
   },
 }
 
+export const checkboxDarkTheme = {
+  color: "#5A88FF",
+  '&.Mui-checked': {
+    color: "#5A88FF",
+  },
+}
+
 export const defaultBtnTheme = {
   color: "#ff5a5a",
   borderRadius: "15px",
