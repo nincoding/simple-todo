@@ -37,7 +37,11 @@ function App() {
   const [clickedIcon, setClickedIcon] = useState('home');
   
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
+    setIsDarkMode((prevMode) => {
+      const newMode = !prevMode;
+      localStorage.setItem("isDarkMode", newMode);
+      return newMode;
+    });
   };
 
   const onCreate = ( date, content ) => {
@@ -68,10 +72,6 @@ function App() {
       setIsDarkMode(localIsDarkMode === "true");
     }
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem("isDarkMode", isDarkMode);
-  }, [isDarkMode]);
 
   const theme = isDarkMode ? darkTheme : lightTheme;
 
