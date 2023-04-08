@@ -20,19 +20,9 @@ import Header from "./components/Header";
 import ModeButton from "./components/ModeButton";
 import Footer from "./components/Footer";
 import { darkTheme, lightTheme } from "./styles/ModeTheme";
-
-
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
-
-  const dataId = useRef(1);
-
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [clickedIcon, setClickedIcon] = useState('home');
-  
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
 
   const [ data, dispatch ] = useReducer(reducer, [],
     (initialState) => {
@@ -43,15 +33,20 @@ function App() {
       return initialState;
   });
 
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [clickedIcon, setClickedIcon] = useState('home');
+  
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   const onCreate = ( date, content ) => {
-    console.log(date);
+    
     if ( date === undefined ) {
       date = new Date();
-      dispatch(createTodo( date, content, dataId.current));
-      dataId.current += 1;
+      dispatch(createTodo( date, content, uuidv4()));
     } else {
-            dispatch(createTodo( date, content, dataId.current));
-      dataId.current += 1;
+      dispatch(createTodo( date, content, uuidv4()));
     }
   };
 

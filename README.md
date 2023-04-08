@@ -9,6 +9,7 @@ npm create vite@latest
 npm install
 npm install @mui/material @emotion/react @emotion/styled styled-components react-icons
 npm install react-calendar
+npm install uuid
 ```
 
 ### devDependencies install

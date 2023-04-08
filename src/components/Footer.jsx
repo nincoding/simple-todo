@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { PATH_URL } from "../constants/stringValues";
 
@@ -12,8 +12,6 @@ import {
   OffCalenderIcon,
   FooterWrapper,
 } from "../styles/Footer";
-import { useContext } from "react";
-import { DarkModeContext } from "../contexts/TodoContext";
 
 const Footer = ({ clickedIcon, setClickedIcon }) => {
 
@@ -30,7 +28,7 @@ const Footer = ({ clickedIcon, setClickedIcon }) => {
   };
 
   // localStorage에 저장된 clickedIcon 값을 초기화합니다.
-  React.useEffect(() => {
+  useEffect(() => {
     const storageClickedIcon = window.localStorage.getItem("clickedIcon");
     if (storageClickedIcon) {
       setClickedIcon(storageClickedIcon);
@@ -38,7 +36,7 @@ const Footer = ({ clickedIcon, setClickedIcon }) => {
   }, [setClickedIcon]);
 
   // location.pathname 값으로 clickedIcon 값을 localStorage에 저장합니다.
-  React.useEffect(() => {
+  useEffect(() => {
     const pathname = location.pathname.replace("/", "");
     window.localStorage.setItem("clickedIcon", pathname);
   }, [location]);
