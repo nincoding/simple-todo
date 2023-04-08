@@ -12,7 +12,7 @@ const MenuWrapper = styled.div`
   cursor: pointer;
   padding: 20px 35px;
   white-space: nowrap;
-  ${({ isDarkMode }) => isDarkMode ? DarkStyle : LigthStyle}
+  ${({ isDarkMode }) => isDarkMode ? DarkStyle : LigthStyle }
 `;
 
 export default MenuWrapper;

@@ -5,22 +5,11 @@ import { modalTextFieldTheme, modalTextFieldDarkTheme } from "../styles/textFiel
 import { TextField } from "@mui/material";
 
 import { ModalRemoveIcon, PinIcon, ModalEditIcon } from '../styles/ModeIcons';
-import ModalWrapper from "../styles/ModalWrapper";
-import styled from 'styled-components';
+
 import { Button } from '@mui/material';
 import { removeModalBtnTheme, cancelModalBtnTheme, removeModalBtnDarkTheme } from '../styles/createBtnTheme';
 import { DarkModeContext, TodoDispatchContext } from "../contexts/TodoContext";
-
-const ModalBackGround = styled.div`
-  position: fixed;
-  z-index: 9999;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  overflow-y: auto;
-`;
+import { ModalBackGround, ModalWrapper } from "../styles/ModalWrapper";
 
 const TodoItemModal = ({ 
   open,
@@ -54,15 +43,15 @@ const TodoItemModal = ({
       if (isRemoveClicked) return;
        onClose();
       }}
-      isDarkMode={isDarkMode}
+      
     >
       {!isEditClicked && !isRemoveClicked && <>
-        <PinIcon isDarkMode={isDarkMode}/>
+        <PinIcon />
         <p>{todoItem.content}</p>
       </>}
 
       {isRemoveClicked && <>
-        <ModalRemoveIcon isDarkMode={isDarkMode}/>
+        <ModalRemoveIcon />
         <p className='remove'>정말 삭제하시겠습니까?</p>
         <div className='removeModalBtn'>
           <ThemeProvider theme={cancelModalBtnTheme}>
@@ -88,7 +77,7 @@ const TodoItemModal = ({
       {
         isEditClicked && 
         <>
-          <ModalEditIcon isDarkMode={isDarkMode}/>
+          <ModalEditIcon />
           <ThemeProvider theme={editTheme}>
           <TextField
             fullWidth

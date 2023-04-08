@@ -50,7 +50,7 @@ const TodoItem = ({ todoItem, index }) => {
           handleModalOpen();
         }}
       >
-        <EditIcon isDarkMode={isDarkMode}/>
+        <EditIcon />
       </Button>
       <Button 
         sx={ defaultBtnTheme }
@@ -59,7 +59,7 @@ const TodoItem = ({ todoItem, index }) => {
           handleModalOpen();
         }}
       >
-        <RemoveIcon isDarkMode={isDarkMode}/>
+        <RemoveIcon />
       </Button>
     </div>
     </TodoItemWrapper>

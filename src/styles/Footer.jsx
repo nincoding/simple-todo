@@ -7,21 +7,21 @@ export const OnGraphIcon = styled(GoGraph)`
   width: 35px;
   height: 35px;
   cursor: pointer;
-  color: ${(props) => props.isDarkMode ? '#5A88FF' : '#FF5A5A' };
+  color: ${({ theme }) => theme.mainColor };
 `;
 
 export const OnHomeIcon = styled(BsCalendarCheck)`
   width: 35px;
   height: 35px;
   cursor: pointer;
-  color: ${(props) => props.isDarkMode ? '#5A88FF' : '#FF5A5A' };
+  color: ${({ theme }) => theme.mainColor };
 `;
 
 export const OnCalenderIcon = styled(MdDateRange)`
   width: 45px;
   height: 45px;
   cursor: pointer;
-  color: ${(props) => props.isDarkMode ? '#5A88FF' : '#FF5A5A' };
+  color: ${({ theme }) => theme.mainColor };
 `;
 
 export const OffGraphIcon = styled(OnGraphIcon)`
@@ -38,7 +38,7 @@ export const OffCalenderIcon = styled(OnCalenderIcon)`
 
 export const FooterWrapper = styled.footer`
   height: 80px;
-  background-color: ${(props) => props.isDarkMode ? '#1e1f22' : '#EDEDED' };
+  background-color: ${({ theme }) => theme.footerBackgroundColor };
   position: fixed;
   bottom: 0%;
   @media screen and (min-width: 650px) {

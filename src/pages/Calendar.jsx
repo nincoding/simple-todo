@@ -1,14 +1,10 @@
 import React, { useContext, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import styled from "styled-components";
 import TodoItemList from "../components/TodoItemList";
 import { TodoStateContext } from "../contexts/TodoContext";
 import TodoItemInputField from "../components/TodoItemInputField";
-
-const CalendarWrapper = styled.div`
-  margin: 12%;
-`;
+import { CalendarWrapper } from "../styles/Calendar";
 
 const CalendarPage = () => {
 

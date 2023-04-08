@@ -1,10 +1,21 @@
 import styled from "styled-components";
 
-const ModalWrapper = styled.div`
+export const ModalBackGround = styled.div`
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+`;
+
+export const ModalWrapper = styled.div`
   display: ${(props) => props.open ? 'block' : 'none' };
   z-index: 9999;
   position: fixed;
-  background-color: ${(props) => props.isDarkMode ? '#303030' : '#fff7da' };
+  background-color: ${({ theme }) => theme.modalBackgroundColor };
   top: 50%;
   left: 50%;
   transform: translate(-50%, -25%);
@@ -32,7 +43,7 @@ const ModalWrapper = styled.div`
     font-size: 24px;
     word-break: keep-all;
     overflow-wrap: break-word;
-    color: ${(props) => props.isDarkMode ? '#f7f7f7d3' : '#303030' };
+    color: ${({ theme }) => theme.modalTextColor };
     text-align: center;
   }
   .remove {
@@ -47,5 +58,3 @@ const ModalWrapper = styled.div`
     gap: 100px;
   }
 `;
-
-export default ModalWrapper;

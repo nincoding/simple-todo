@@ -39,7 +39,7 @@ const TodoItemInputField = ({ date }) => {
   const theme = isDarkMode ? textFieldDarkTheme : textFieldTheme;
 
   return (
-    <TodoInputWrapper isDarkMode={isDarkMode}>
+    <TodoInputWrapper >
     <ThemeProvider theme={ theme }>
       <TextField
         fullWidth

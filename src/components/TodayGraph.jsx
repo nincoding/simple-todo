@@ -1,4 +1,4 @@
-import { DarkModeContext, TodoStateContext } from "../contexts/TodoContext";
+import { DarkModeContext } from "../contexts/TodoContext";
 
 // style
 import TodayGraphWrapper from "../styles/TodayGraphWrapper";
@@ -6,8 +6,6 @@ import ProgressRing from "../styles/ProgressRing";
 import { useContext } from "react";
 
 const TodayGraph = ({ todoList }) => {
-
-  const isDarkMode = useContext(DarkModeContext);
 
   const date = new Date();
   const weekly = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -19,8 +17,10 @@ const TodayGraph = ({ todoList }) => {
   const circumference = 2 * Math.PI * 55;
   const progress = (averageNum / 100) * circumference;
 
+  const isDarkMode = useContext(DarkModeContext);
+
   return (
-    <TodayGraphWrapper isDarkMode={isDarkMode}>
+    <TodayGraphWrapper >
       <p>{date.getFullYear()}</p>
       <p>
         <span>{weekly[date.getDay()]}</span>

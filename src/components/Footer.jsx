@@ -17,7 +17,6 @@ import { DarkModeContext } from "../contexts/TodoContext";
 
 const Footer = ({ clickedIcon, setClickedIcon }) => {
 
-  const isDarkMode = useContext(DarkModeContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -45,11 +44,11 @@ const Footer = ({ clickedIcon, setClickedIcon }) => {
   }, [location]);
 
   return (
-    <FooterWrapper isDarkMode={isDarkMode}>
+    <FooterWrapper >
       <div className="left">        
         <div onClick={() => handleIconClick("graph")}>
           {clickedIcon === "graph" ? (
-          <OnGraphIcon isDarkMode={isDarkMode}/>
+          <OnGraphIcon />
           ) : (
           <OffGraphIcon />
         )}
@@ -58,7 +57,7 @@ const Footer = ({ clickedIcon, setClickedIcon }) => {
       <div className="center" >      
       <div onClick={() => handleIconClick("home")}>
         {clickedIcon === "home" ? (
-          <OnHomeIcon isDarkMode={isDarkMode}/>
+          <OnHomeIcon />
         ) : (
           <OffHomeIcon />
         )} 
@@ -67,7 +66,7 @@ const Footer = ({ clickedIcon, setClickedIcon }) => {
       <div className="right" >   
       <div onClick={() => handleIconClick("calendar")}>  
         {clickedIcon === "calendar" ? (
-          <OnCalenderIcon isDarkMode={isDarkMode}/>
+          <OnCalenderIcon />
         ) : (
           <OffCalenderIcon />
         )}

@@ -5,7 +5,7 @@ const DarkStyle = css`
   color: ${(props) => props.isFinished ? "#898989" : "#89aaff"};
 `
 
-const LigthStyle = css`
+const LightStyle = css`
   background-color: ${(props) => (props.even ? "#f2f2f2" : "white")};
   color: ${(props) => props.isFinished ? "#898989" : "#5f3b3b"};
 `
@@ -19,7 +19,7 @@ const TodoItemWrapper = styled.div`
   padding: 10px 30px;
   font-size: 20px;
   cursor: pointer;
-  ${({ isDarkMode }) => isDarkMode ? DarkStyle : LigthStyle}
+  ${({ isDarkMode }) => isDarkMode ? DarkStyle : LightStyle }
   > span {
     width: 60%;
     text-decoration: ${(props) => props.isFinished ? "line-through" : "none"};

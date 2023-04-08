@@ -4,7 +4,7 @@ const ControlMenu = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => props.isDarkMode ? '#181818' : 'white'};
+  background-color: ${({ theme }) => theme.appBackgroundColor };
   > div:nth-child(1) {
     display: flex;
     width: 35%;
