@@ -30,6 +30,7 @@ const GraphWrapper = styled.div`
   p:last-child {
     font-size: 34px;
     color: ${({ theme }) => theme.graphColor };
+    padding-top: 50px;
     @media screen and (max-width: 650px) {
       margin-left: 0px;
       font-size: 28px;

@@ -46,7 +46,7 @@ export const lightTheme = {
   footerBackgroundColor: '#EDEDED',
   paginationBtnColor: '#f14747',
   paginationListColor: '#333',
-  paginationBackgroundColor: '#fff',
+  paginationBackgroundColor: '#f2f2f2',
   graphColor: '#5F3B3B',
   modalTextColor: '#303030',
   todayGraphBackground: 'white',

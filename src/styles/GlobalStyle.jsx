@@ -58,8 +58,8 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   img {
-    width: 250px;
-    height: 250px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     opacity: 80%;
     @media screen and (max-width: 650px) {

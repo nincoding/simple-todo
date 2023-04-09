@@ -15,16 +15,15 @@ const TodoItemWrapper = styled.div`
   align-items: center;
   gap: 20px;
   width: 100%;
-  height: 80px;
+  height: 60px;
   padding: 10px 30px;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
   position: relative;
   ${({ isDarkMode }) => isDarkMode ? DarkStyle : LightStyle }
   @media screen and (max-width: 650px) {
     padding: 10px 15px;
     font-size: 14px;
-    height: 60px;
     gap: 15px;
   }
   > span {

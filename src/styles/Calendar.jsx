@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const CalendarWrapper = styled.div`
-  margin: 12%;
+  margin: 5% 24%;
   @media screen and (max-width: 650px) {
-    margin-top: 11%;
+    margin: 14% 10% -30px 10%;
     margin-bottom: -30px;
     font-size: 10px;
   }
@@ -11,8 +11,7 @@ export const CalendarWrapper = styled.div`
     margin-top: 10%;
     margin-bottom: 0px;
   }
-  .react-calendar { 
-    width: 500px;
+  .react-calendar {
     max-width: 100%;
     background-color: ${({ theme }) => theme.calendarBackgroundColor };
     color:  ${({ theme }) => theme.calendarColor };
@@ -22,7 +21,7 @@ export const CalendarWrapper = styled.div`
     line-height: 1.125em;
     border: none;
     font-family: 'Jalnan';
-    padding-bottom: 20px;
+    padding-bottom: 5px;
     @media screen and (max-width: 650px) {
       width: 100%;
       height: 80%;
@@ -37,15 +36,13 @@ export const CalendarWrapper = styled.div`
     }
   }
   .react-calendar__navigation {
-    @media screen and (max-width: 650px) {
-      height: 80%;
-    }
+    height: 80%;
   }
   .react-calendar__navigation button {
     color: ${({ theme }) => theme.mainColor };
     min-width: 44px;
     background: none;
-    font-size: 15px;
+    font-size: 12px;
     margin-top: 8px;
     font-family: 'Jalnan';
   }
@@ -64,9 +61,7 @@ export const CalendarWrapper = styled.div`
   }
   .react-calendar__month-view__days__day {
     color: ${({ theme }) => theme.calendarDayColor };
-    @media screen and (max-width: 412px) {
     font-size: 10px;
-  }
   }
   .react-calendar__month-view__days__day--neighboringMonth {
     color: #808080;

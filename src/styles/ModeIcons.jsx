@@ -6,32 +6,24 @@ import { HiSun } from "react-icons/hi";
 import { MdDelete } from 'react-icons/md';
 
 export const MoonIcon = styled(RiMoonClearFill)`
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   color: #FF5A5A;
   background-color: #EDEDED;
   &:hover {
     color: #5f3b3b;
     transition: 400ms;
   }
-  @media screen and (max-width: 650px) {
-    width: 35px;
-    height: 35px;
-  }
 `;
 
 export const SunIcon = styled(HiSun)`
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   color: #5A88FF;
   background-color: '#1e1f22';
   &:hover {
     color: #89aaff;
     transition: 400ms;
-  }
-  @media screen and (max-width: 650px) {
-    width: 45px;
-    height: 45px;
   }
 `;
 
@@ -96,11 +88,7 @@ export const ModalEditIcon = styled(EditIcon)`
 `;
 
 export const LogoIcon = styled(TbChecklist)`
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   color: ${({ theme }) => theme.mainColor };
-  @media screen and (max-width: 650px) {
-    width: 35px;
-    height: 35px;
-  }
 `;
