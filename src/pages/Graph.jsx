@@ -7,22 +7,54 @@ const GraphWrapper = styled.div`
   display: flex;
   justify-content: center;
   text-align: center;
+  align-items: center;
   flex-direction: column;
   > p:nth-child(1) {
     font-size: 24px;
     position: absolute;
     top: 15%;
-    left: 25%;
+    left: 28%;
     color: ${({ theme }) => theme.graphColor };
+    @media screen and (max-width: 650px) {
+      font-size: 20px;
+      margin-left: -15px;
+      justify-content: center;
+      align-items: center;
+    }
+    @media screen and (max-width: 412px) {
+      justify-content: center;
+      font-size: 18px;
+      margin-left: -10px;
+    }
   }
   p:last-child {
     font-size: 34px;
     color: ${({ theme }) => theme.graphColor };
+    @media screen and (max-width: 650px) {
+      margin-left: 0px;
+      font-size: 28px;
+      align-items: center;
+    }
+    @media screen and (max-width: 412px) {
+      margin-left: 10px;
+    }
   }
   svg {
     position: absolute;
-    top: 30%;
+    top: 28%;
     left: 35%;
+    @media screen and (max-width: 650px) {
+      top: 28%;
+      justify-content: center;
+      width: 150px; 
+      height: 150px;
+    }
+    @media screen and (max-width: 412px) {
+      top: 30%;
+      justify-content: center;
+      width: 140px; 
+      height: 140px;
+    }
   }
   path {
     fill: ${({ theme }) => theme.mainColor };

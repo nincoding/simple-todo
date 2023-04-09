@@ -10,6 +10,12 @@ const ModeButtonWrapper = styled.button`
   border: none;
   background-color: ${({ theme }) => theme.modeBtnBackgroundColor };
   cursor: pointer;
+  @media screen and (max-width: 650px) {
+    top: 3px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
 `;
 
 export default ModeButtonWrapper;

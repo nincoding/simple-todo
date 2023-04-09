@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useLocation } from 'react-router-dom';
 import ControlMenu from "../styles/ControlMenu";
 import FilterMenu from "./FilterMenu";
 import { filterList } from "../constants/stringValues";
@@ -6,12 +7,18 @@ import TodoItem from "./TodoItem";
 import EmptyItem from "./EmptyItem";
 import Pagination from "./Pagination";
 
-const PAGE_SIZE = 9;
-
 const TodoItemList = ({ todoList }) => {
 
   const [ activeFilter, setActiveFilter ] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
+
+  const location = useLocation();
+  const currentPath = location.pathname;
+  console.log(currentPath);
+
+  const PAGE_SIZE = currentPath === '/' ? 8 : 5;
+
+  console.log(PAGE_SIZE);
 
   const handleFilterClick = (text) => {
     setActiveFilter(text);
@@ -51,8 +58,8 @@ const TodoItemList = ({ todoList }) => {
         })
       }
       </ControlMenu>
-      { todoList.length > 0 && filteredList.length > 0 ? (
-        <>
+      { todoList.length > 0 && filteredList.length > 0 ? (<>
+        <div className="listWrapper">
         {currentPageList.map((todoItem, index) => (
           <TodoItem
             key={todoItem.id}
@@ -60,6 +67,7 @@ const TodoItemList = ({ todoList }) => {
             index={index}
           />
         ))}
+      </div>
         {pageCount > 1 && (
           <Pagination
             pageCount={pageCount}
@@ -67,8 +75,7 @@ const TodoItemList = ({ todoList }) => {
             onPageClick={handlePageClick}
           />
         )}
-      </>
-        ) : (
+      </>) : (
           <div>
             {
               filteredList.length === 0 && activeFilter === "All"

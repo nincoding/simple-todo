@@ -1,4 +1,4 @@
-import { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import { ThemeProvider } from '@mui/material/styles';
 import { TextField } from "@mui/material";
 import { textFieldDarkTheme, textFieldTheme } from "../styles/textFieldTheme";
@@ -13,6 +13,7 @@ const TodoItemInputField = ({ date }) => {
   const { onCreate } = useContext(TodoDispatchContext);
   const contentInput = useRef();
   const isDarkMode = useContext(DarkModeContext);
+  const [width, setWidth] = useState(window.innerWidth);
 
   const handleChange = (e) => {
     setContent(e.target.value);
@@ -38,6 +39,16 @@ const TodoItemInputField = ({ date }) => {
 
   const theme = isDarkMode ? textFieldDarkTheme : textFieldTheme;
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  
+  const smallMode = width <= 650 ? 'small' : '';
+
   return (
     <TodoInputWrapper >
     <ThemeProvider theme={ theme }>
@@ -51,6 +62,7 @@ const TodoItemInputField = ({ date }) => {
         inputRef={contentInput}
         onKeyDown={handleKeyDown}
         autoComplete="off"
+        size={smallMode}
       />
       <CreateButton onCreateClick={onCreateClick} disabled={isButtonDisabled} />
     </ThemeProvider>

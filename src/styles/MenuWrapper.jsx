@@ -13,6 +13,10 @@ const MenuWrapper = styled.div`
   padding: 20px 35px;
   white-space: nowrap;
   ${({ isDarkMode }) => isDarkMode ? DarkStyle : LigthStyle }
+  @media screen and (max-width: 650px) {
+    padding: 15px 35px;
+    font-size: 12px;
+  }
 `;
 
 export default MenuWrapper;

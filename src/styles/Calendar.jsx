@@ -2,6 +2,15 @@ import styled from "styled-components";
 
 export const CalendarWrapper = styled.div`
   margin: 12%;
+  @media screen and (max-width: 650px) {
+    margin-top: 11%;
+    margin-bottom: -30px;
+    font-size: 10px;
+  }
+  @media screen and (max-width: 412px) {
+    margin-top: 10%;
+    margin-bottom: 0px;
+  }
   .react-calendar { 
     width: 500px;
     max-width: 100%;
@@ -14,6 +23,23 @@ export const CalendarWrapper = styled.div`
     border: none;
     font-family: 'Jalnan';
     padding-bottom: 20px;
+    @media screen and (max-width: 650px) {
+      width: 100%;
+      height: 80%;
+      position: relative;
+      top: -50px;
+      padding-bottom: 5px;
+    }
+    @media screen and (max-width: 412px) {
+      width: 100%;
+      padding-bottom: 10px;
+      top: -25px;
+    }
+  }
+  .react-calendar__navigation {
+    @media screen and (max-width: 650px) {
+      height: 80%;
+    }
   }
   .react-calendar__navigation button {
     color: ${({ theme }) => theme.mainColor };
@@ -37,7 +63,10 @@ export const CalendarWrapper = styled.div`
     text-decoration: none;
   }
   .react-calendar__month-view__days__day {
-      color: ${({ theme }) => theme.calendarDayColor };
+    color: ${({ theme }) => theme.calendarDayColor };
+    @media screen and (max-width: 412px) {
+    font-size: 10px;
+  }
   }
   .react-calendar__month-view__days__day--neighboringMonth {
     color: #808080;

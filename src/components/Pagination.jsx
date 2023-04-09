@@ -3,14 +3,14 @@ import { PaginationContainer } from "../styles/Pagination";
 const Pagination = ({ pageCount, currentPage, onPageClick }) => {
 
   const startPage = Math.max(currentPage - 4, 1);
-  const endPage = Math.min(startPage + 8, pageCount);
+  const endPage = Math.min(startPage + 4, pageCount);
   const pageNumbers = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
 
   const handlePageClick = (page) => {
     onPageClick(page);
   };
 
-  const filteredPage = pageNumbers.slice(0, 5);
+  const filteredPage = pageNumbers.slice(0, 8);
 
   return (
     <PaginationContainer >

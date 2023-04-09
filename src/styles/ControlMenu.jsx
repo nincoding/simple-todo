@@ -4,13 +4,14 @@ const ControlMenu = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.appBackgroundColor };
+  background-color: ${({ theme }) => theme.controlBackgroundColor };
   > div:nth-child(1) {
     display: flex;
     width: 35%;
     justify-content: start;
     text-align: center;
     padding-left: 70px;
+    
   }
   div:nth-child(2) {
     display: flex;
@@ -18,6 +19,7 @@ const ControlMenu = styled.div`
     justify-content: center;
     text-align: center;
     padding-left: 10px;
+    
   }
   div:nth-child(3) {
     display: flex;

@@ -20,6 +20,9 @@ export const textFieldTheme = createTheme({
             fontFamily: 'Jalnan',
             fontWeight: '300',
             color: '#303030',
+            '@media (max-width: 650px)': {
+              marginLeft: '15px',
+            },
           },
           '& .MuiInputLabel-root': {
             marginLeft: '25px',
@@ -27,6 +30,10 @@ export const textFieldTheme = createTheme({
             color: '#898989',
             fontWeight: 'normal',
             fontSize: '16px',
+            '@media (max-width: 650px)': {
+              fontSize: '14px',
+              marginLeft: '15px',
+            },
           },
           '& .MuiInputBase-root': {
             backgroundColor: 'white',
@@ -62,6 +69,9 @@ export const textFieldDarkTheme = createTheme({
             fontFamily: 'Jalnan',
             fontWeight: '300',
             color: '#f3f2f2',
+            '@media (max-width: 650px)': {
+              marginLeft: '15px',
+            },
           },
           '& .MuiInputLabel-root': {
             marginLeft: '25px',
@@ -69,6 +79,10 @@ export const textFieldDarkTheme = createTheme({
             color: '#e7e7e781',
             fontWeight: 'normal',
             fontSize: '16px',
+            '@media (max-width: 650px)': {
+              fontSize: '14px',
+              marginLeft: '15px',
+            },
           },
           '& .MuiInputBase-root': {
             borderRadius: '25px',

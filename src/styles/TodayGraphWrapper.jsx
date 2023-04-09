@@ -12,18 +12,23 @@ const TodayGraphWrapper = styled.div`
   @media screen and (max-width: 650px) {
     padding-left: 20px;
     transition: 300ms;
+    min-height: 100px;
   }
   p {
     font-size: 20px;
     margin-right: 15px;
     color: ${ ({ theme }) => theme.calendarColor };
+    @media screen and (max-width: 650px) {
+      font-size: 15px;
+      margin-right: -5px;
+    }
   }
   p:first-child {
     font-size: 18px;
     position: absolute;
     top: 23%;
     @media screen and (max-width: 650px) {
-      font-size: 18px;
+      font-size: 14px;
     }
   }
   p:nth-child(2) {

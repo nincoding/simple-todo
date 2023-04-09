@@ -35,6 +35,7 @@ export const ModalWrapper = styled.div`
     box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
     border-radius: 10px;
     padding: 20px;
+    top: 40%;
   }
   > p {
     padding-top: 30px;
@@ -45,6 +46,9 @@ export const ModalWrapper = styled.div`
     overflow-wrap: break-word;
     color: ${({ theme }) => theme.modalTextColor };
     text-align: center;
+    @media screen and (max-width: 650px) {
+      font-size: 18px;
+    }
   }
   .remove {
     padding-top: 100px;
@@ -56,5 +60,8 @@ export const ModalWrapper = styled.div`
     text-align: center;
     padding-top: 100px;
     gap: 100px;
+    @media screen and (max-width: 650px) {
+      gap: 50px;
+    }
   }
 `;

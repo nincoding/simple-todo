@@ -15,9 +15,14 @@ export const createBtnTheme = createTheme({
           '&:hover': {
             backgroundColor: '#5f3b3b',
             border:'none',
+            
           },
           '&:active': {
             backgroundColor: '#bf0000',
+          },
+          '@media (max-width: 650px)': {
+            padding: '5px 10px',
+            fontSize: '14px',
           },
         },
       },
@@ -44,6 +49,10 @@ export const createBtnDarkTheme = createTheme({
           '&:active': {
             backgroundColor: '#3f88d7',
           },
+          '@media (max-width: 650px)': {
+            padding: '5px 10px',
+            fontSize: '14px',
+          },
         },
       },
     },
@@ -68,6 +77,10 @@ export const removeModalBtnTheme = createTheme({
           },
           '&:active': {
             backgroundColor: '#bf0000',
+          },
+          '@media (max-width: 650px)': {
+            padding: '5px 25px',
+            fontSize: '14px',
           },
         },
       },
@@ -94,6 +107,10 @@ export const removeModalBtnDarkTheme = createTheme({
           '&:active': {
             backgroundColor: '#bf0000',
           },
+          '@media (max-width: 650px)': {
+            padding: '5px 25px',
+            fontSize: '14px',
+          },
         },
       },
     },
@@ -118,6 +135,10 @@ export const cancelModalBtnTheme = createTheme({
           },
           '&:active': {
             backgroundColor: '#bf0000',
+          },
+          '@media (max-width: 650px)': {
+            padding: '5px 25px',
+            fontSize: '14px',
           },
         },
       },

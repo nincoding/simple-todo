@@ -19,7 +19,14 @@ const TodoItemWrapper = styled.div`
   padding: 10px 30px;
   font-size: 20px;
   cursor: pointer;
+  position: relative;
   ${({ isDarkMode }) => isDarkMode ? DarkStyle : LightStyle }
+  @media screen and (max-width: 650px) {
+    padding: 10px 15px;
+    font-size: 14px;
+    height: 60px;
+    gap: 15px;
+  }
   > span {
     width: 60%;
     text-decoration: ${(props) => props.isFinished ? "line-through" : "none"};
@@ -37,6 +44,21 @@ const TodoItemWrapper = styled.div`
     width: 30%;
     display: flex;
     justify-content: flex-end;
+    button:first-child {
+      @media screen and (max-width: 650px) {
+        margin: 0;
+        padding: 0;
+        left: 30px;
+      }
+    }
+    button:last-child {
+      @media screen and (max-width: 650px) {
+        margin: 0;
+        padding: 0;
+        width: 18px;
+        left: 15px;
+      }
+    }
   }
 `;
 

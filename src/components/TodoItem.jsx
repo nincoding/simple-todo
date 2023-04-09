@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import TodoItemWrapper from "../styles/TodoItemWrapper";
 import { Checkbox } from "@mui/material";
 import { checkboxTheme, defaultBtnTheme, checkboxDarkTheme } from "../styles/checkboxTheme"; 
@@ -39,6 +39,7 @@ const TodoItem = ({ todoItem, index }) => {
           onFinish(todoItem.id, todoItem.finish);
         }}
         checked={ !todoItem.finish ? false : true}
+        size='small'
       />
     </div>
     <span onClick={handleModalOpen}>{filteredContent}</span>

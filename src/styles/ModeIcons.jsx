@@ -14,6 +14,10 @@ export const MoonIcon = styled(RiMoonClearFill)`
     color: #5f3b3b;
     transition: 400ms;
   }
+  @media screen and (max-width: 650px) {
+    width: 35px;
+    height: 35px;
+  }
 `;
 
 export const SunIcon = styled(HiSun)`
@@ -24,6 +28,10 @@ export const SunIcon = styled(HiSun)`
   &:hover {
     color: #89aaff;
     transition: 400ms;
+  }
+  @media screen and (max-width: 650px) {
+    width: 45px;
+    height: 45px;
   }
 `;
 
@@ -36,6 +44,10 @@ export const RemoveIcon = styled(MdDelete)`
   }
   &:active {
     color: ${ ({ theme }) => theme.iconActiveColor };
+  }
+  @media screen and (max-width: 650px) {
+    width: 18px;
+    height: 18px;
   }
 `;
 
@@ -68,6 +80,10 @@ export const EditIcon = styled(BsPencilSquare)`
   &:active {
     color: ${ ({ theme }) => theme.iconActiveColor };
   }
+  @media screen and (max-width: 650px) {
+    width: 18px;
+    height: 18px;
+  }
 `;
 
 export const ModalEditIcon = styled(EditIcon)`
@@ -83,4 +99,8 @@ export const LogoIcon = styled(TbChecklist)`
   width: 45px;
   height: 45px;
   color: ${({ theme }) => theme.mainColor };
+  @media screen and (max-width: 650px) {
+    width: 35px;
+    height: 35px;
+  }
 `;

@@ -7,6 +7,10 @@ const TodoInputWrapper = styled.div`
   gap: 20px;
   background-color: ${({ theme }) => theme.inputBackground };
   padding: 10px 30px;
+  @media screen and (max-width: 650px) {
+    padding: 10px 15px;
+    gap: 15px;
+  }
 `;
 
 export default TodoInputWrapper;

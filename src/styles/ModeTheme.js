@@ -1,6 +1,7 @@
 export const darkTheme = {
   bodyBackgroundColor: '#1e1e1e',
   appBackgroundColor: '#181818',
+  controlBackgroundColor: '#181818',
   imgTextColor: '#D7D7D7',
   calendarBackgroundColor: '#303030',
   calendarColor: '#89aaff',
@@ -27,10 +28,11 @@ export const darkTheme = {
 export const lightTheme = {
   bodyBackgroundColor: '#f6f6f6',
   appBackgroundColor: '#f2f2f2',
+  controlBackgroundColor: '#fff',
   imgTextColor: '#303030',
   calendarBackgroundColor: '#fff7dab0',
   calendarColor: '#A65D50',
-  calendarDayColor: '#222',
+  calendarDayColor: '#ec9788',
   calendarNowBackground: '#ff595657',
   mainColor: '#ff5a5a',
   inputBackground: '#ffcece',
@@ -49,4 +51,5 @@ export const lightTheme = {
   modalTextColor: '#303030',
   todayGraphBackground: 'white',
   headerBackground: '#EDEDED',
+
 };
