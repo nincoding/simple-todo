@@ -16,10 +16,24 @@ npm install uuid
 
 ```
 npm i -D prettier
+npm install --save-dev @rollup/plugin-replace
 ```
 
 ## 실행 명령어
 
 ```
 npm run dev
+```
+
+## 배포 명령어
+
+```
+npm install firebase
+
+// 윈도우 터미널에서 실행
+npm install -g firebase-tools
+firebase login
+// 프로젝트 디렉토리로 이동 cd simple-todo
+firebase init
+firebase deploy
 ```

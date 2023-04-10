@@ -36,7 +36,7 @@ const TodoItem = ({ todoItem, index }) => {
       <Checkbox 
         sx={ isDarkMode ? checkboxDarkTheme : checkboxTheme }
         onClick={() => {
-          onFinish(todoItem.id, todoItem.finish);
+          onFinish(todoItem);
         }}
         checked={ !todoItem.finish ? false : true}
         size='small'

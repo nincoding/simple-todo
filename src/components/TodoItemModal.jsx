@@ -102,7 +102,7 @@ const TodoItemModal = ({
             <Button
               disabled={isButtonDisabled} 
               onClick={() =>{
-                onEdit(todoItem.id, todoItem.date, input, todoItem.finish);
+                onEdit(todoItem, input);
                 onClose();
               }}
             >

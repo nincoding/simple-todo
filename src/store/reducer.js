@@ -25,7 +25,7 @@ const reducer = ( state, action ) => {
 
     case FINISH :
       newState = state.map((item) => 
-        item.id === action.data.id ? { ...item, finish: !item.finish } : item
+        item.id === action.data.id ? { ...item, finish: action.data.finish } : item
       );
       break;
 
@@ -33,7 +33,7 @@ const reducer = ( state, action ) => {
     return state;
   }
 
-  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newState));
+  //localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newState));
   return newState;
 };
 

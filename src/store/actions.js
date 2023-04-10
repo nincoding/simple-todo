@@ -20,20 +20,22 @@ export const removeTodo = ( targetId ) => ({
   targetId,
 });
 
-export const editTodo = ( targetId, date, content, finish ) => ({
+export const editTodo = ( clickedItem, content ) => ({
   type: EDIT,
   data: {
-    id : targetId,
-    date: new Date(date).getTime(),
+    id : clickedItem.id,
+    date: new Date(clickedItem.date).getTime(),
     content,
-    finish: finish,
+    finish: clickedItem.finish,
   }
 });
 
-export const finishTodo = ( targetId, finish ) => ({
+export const finishTodo = ( clickedItem ) => ({
   type: FINISH,
   data: {
-    id: targetId,
-    finish: !finish,
+    id: clickedItem.id,
+    date: clickedItem.date,
+    content: clickedItem.content,
+    finish: !clickedItem.finish,
   }
 })
