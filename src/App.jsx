@@ -3,11 +3,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalStyle from './styles/GlobalStyle';
 import { ThemeProvider } from "styled-components";
 // contant
-import { PATH_URL, LOCAL_STORAGE_KEY } from "./constants/stringValues";
+import { PATH_URL } from "./constants/stringValues";
 
 //store
 import { DarkModeContext, TodoDispatchContext, TodoStateContext } from "./contexts/TodoContext";
-import { initTodo, createTodo, removeTodo, editTodo, finishTodo } from "./store/actions";
+import { createTodo, removeTodo, editTodo, finishTodo } from "./store/actions";
 import reducer from "./store/reducer";
 
 // page
@@ -20,53 +20,18 @@ import Header from "./components/Header";
 import ModeButton from "./components/ModeButton";
 import Footer from "./components/Footer";
 import { darkTheme, lightTheme } from "./styles/ModeTheme";
-import { v4 as uuidv4 } from 'uuid';
 
 // firebase
-import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
-import { getFirestore, collection, addDoc, setDoc, doc, deleteDoc, getDocs, QuerySnapshot } from 'firebase/firestore';
-import firebaseConfig from "../firebaseConfig";
-
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getFirestore(app);
+import { collection, addDoc, setDoc, doc, deleteDoc } from 'firebase/firestore';
+import { db, syncTodoItemListStateWithFirestore } from "./utils/firebase";
 
 function App() {
-  //const [data, dispatch] = useReducer(reducer, []);
-  
-  /*
-  const [ data, dispatch ] = useReducer(reducer, [],
-    (initialState) => {
-      const localData = localStorage.getItem(LOCAL_STORAGE_KEY);
-      if (localData) {
-        return JSON.parse(localData);
-      }
-      return initialState;
-  });
-  */
 
   const [data, dispatch] = useReducer(reducer, []);
 
   useEffect(() => {
-    const todoItemCollection = collection(db, 'todoItem');
-
-    getDocs(todoItemCollection)
-      .then((querySnapshot) => {
-        const firestoreTodoItemList = [];
-  
-        querySnapshot.forEach((doc) => {
-          firestoreTodoItemList.push({
-            id: doc.id,
-            date: new Date(doc.data().date).getTime(),
-            content: doc.data().content,
-            finish: doc.data().finish,
-          });
-        });
-  
-      dispatch(initTodo(firestoreTodoItemList));
-    });
-  }, []);
+    syncTodoItemListStateWithFirestore(dispatch);
+    }, []);
 
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [clickedIcon, setClickedIcon] = useState('home');
@@ -87,23 +52,17 @@ function App() {
       finish: false,
     });
     
-    if ( date === undefined ) {
-      date = new Date();
-      dispatch(createTodo( date, content, docRef.id));
-    } else {
-      dispatch(createTodo( date, content, docRef.id));
-    }
+    dispatch(createTodo( date, content, docRef.id));
   };
 
   const onFinish = async (clickedItem) => {
     const todoItemRef = doc(db, 'todoItem', clickedItem.id);
-    await setDoc(todoItemRef, { finish: !clickedItem.finish }, { merge: true } );
+    await setDoc(todoItemRef, finishTodo(clickedItem).data, { merge: true } );
   
     dispatch(finishTodo(clickedItem));
   };
 
   const onRemove = async (targetId) => {
-
     const todoItemRef = doc(db, 'todoItem', targetId);
     await deleteDoc(todoItemRef);
 
@@ -112,12 +71,7 @@ function App() {
 
   const onEdit = async (clickedItem, content) => {
     const todoItemRef = doc(db, 'todoItem', clickedItem.id);
-    await setDoc(todoItemRef, { 
-      id : clickedItem.id,
-      date: new Date(clickedItem.date).getTime(),
-      content,
-      finish: clickedItem.finish,
-    }, { merge: true } );
+    await setDoc(todoItemRef, editTodo(clickedItem, content).data, { merge: true } );
 
     dispatch(editTodo(clickedItem, content));
   };

@@ -14,11 +14,8 @@ const TodoItemList = ({ todoList }) => {
 
   const location = useLocation();
   const currentPath = location.pathname;
-  console.log(currentPath);
 
   const PAGE_SIZE = currentPath === '/' ? 8 : 5;
-
-  console.log(PAGE_SIZE);
 
   const handleFilterClick = (text) => {
     setActiveFilter(text);
